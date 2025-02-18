@@ -26,7 +26,7 @@ If this is your first time using this repo, follow these steps:
 2. Push to your remote and create a PR on GitHub.
 3. Find the "Assignment Submission" Google Sheet (bookmarked in your team's slack channel) and follow the instructions there. It will look something like this:
    
-    <img width="400" alt="clone-repo" src="https://github.com/user-attachments/assets/22d32be4-c405-4c7d-8ba5-abb5e8c1debe" />
+    <img width="400" alt="assignment-submission-google-sheet" src="https://github.com/user-attachments/assets/22d32be4-c405-4c7d-8ba5-abb5e8c1debe" />
 
 ## Mentor instructions
 ### Reviewing assignments
