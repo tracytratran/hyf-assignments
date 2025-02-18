@@ -19,12 +19,14 @@ If this is your first time using this repo, follow these steps:
     
 1. After the repo has been created, clone it locally as you would with any repo:
   
-    <img width="400" alt="Screenshot 2025-02-18 at 10 16 11" src="https://github.com/user-attachments/assets/65a9d72f-98da-4bee-9120-f76df01d52bd" />
+    <img width="400" alt="clone-repo" src="https://github.com/user-attachments/assets/65a9d72f-98da-4bee-9120-f76df01d52bd" />
 
 ### Submission process
 1. Working in your local repo, complete the assignments as described in the current module you are learning
 2. Push to your remote and create a PR on GitHub.
-3. Find the "Assignment Submission" Google Sheet (bookmarked in your team's slack channel) and follow the instructions there.
+3. Find the "Assignment Submission" Google Sheet (bookmarked in your team's slack channel) and follow the instructions there. It will look something like this:
+   
+    <img width="400" alt="clone-repo" src="https://github.com/user-attachments/assets/22d32be4-c405-4c7d-8ba5-abb5e8c1debe" />
 
 ## Mentor instructions
 ### Reviewing assignments
