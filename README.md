@@ -31,7 +31,7 @@ If this is your first time using this repo, follow these steps:
 ## Mentor instructions
 ### Reviewing assignments
 If you're an Assignment Reviewer, follow these steps each week:
-1. Find the "Assignment Submission" Google Sheet (bookedmarked in the team's slack channel)
+1. Find the "Assignment Submission" Google Sheet (bookmarked in the team's slack channel)
 2. Look through the relevant week/module and choose a red PR to review
 3. Once you've left your initial feedback, set it to yellow.
 4. Once any discussion/changes have been completed, it's up to the trainee to merge the PR and set it to green.
