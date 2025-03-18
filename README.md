@@ -34,5 +34,9 @@ If you're an Assignment Reviewer, follow these steps each week:
 1. Find the "Assignment Submission" Google Sheet (bookmarked in the team's slack channel)
 2. Look through the relevant week/module and choose a red PR to review
 3. Once you've left your initial feedback, set it to yellow.
+  > [!TIP]
+  > You should default to use the "Request changes" option when reviewing a PR. It should be clear to the trainee when they need to change something. Once you are happy with the changes, then use "Approve".
+  >
+  > If you are not requesting any specific changes, it's ok to leave comments, but be sure to approve the PR as well so we don't leave anyone hanging.
 4. Once any discussion/changes have been completed, it's up to the trainee to merge the PR and set it to green.
 
