@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello exercise 1!");
+  res.send("Hello from exercise 1!");
 });
 
 app.get("/currentYear", (req, res) => {
