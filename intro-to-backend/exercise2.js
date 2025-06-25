@@ -13,7 +13,7 @@ const knexInstance = knex({
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello exercise 2!");
+  res.send("Hello from exercise 2!");
 });
 
 // Here is an example of the first route, /all-users, which returns all users sorted by their ID
