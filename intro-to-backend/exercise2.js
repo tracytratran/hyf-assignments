@@ -10,6 +10,7 @@ const knexInstance = knex({
   connection: {
     filename: "./database.sqlite3",
   },
+  useNullAsDefault: true,  // Omit warning in console
 });
 
 app.get("/", (req, res) => {
