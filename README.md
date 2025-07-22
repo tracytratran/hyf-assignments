@@ -21,9 +21,27 @@ If this is your first time using this repo, follow these steps:
   
     ![Clone](./assets/clone.png)
 
+### Completing the assignments
+
+> [!TIP]
+  > Before we get into the instructions, remember that GIT has a steep learning curve, and if you get stuck, refer back to your previous GIT sessions for a refresher or reach out for help on slack.
+  >
+  > Here's some general tips to keep in mind:
+  > - Before creating a new assignment branch, always start from `main`.
+  > - Keep your local `main` up to date with the remote `main`, especially after any merges.
+  > - Write meaningful commit messages, to make it easier to follow your progress and review.
+
+#### Starting your assignment
+1. Open your local assignment repo and check which branch you are on.
+2. If you're on another assignment branch, make sure any unsaved changes are committed (or discarded), and then move to `main`.
+3. If you're already on `main`, you're ready for the next step!
+4. Create a new assignment branch with the following naming scheme `module-name-weeknumber/yourname`
+
+Now you're ready to complete your assignment. Remember to commit often, with useful messages.
+
 ### Submission process
-1. Working in your local repo, complete the week's assignments as described in the current module you are learning
-2. Push to your remote and create a PR on GitHub **by Wednesday end of day** (unless otherwise agreed)
+1. When you're ready to submit, make sure you're in your local repo and on the correct branch.
+2. Push to your remote and create a PR on GitHub **by Wednesday end of day** (unless otherwise agreed).
 3. Find the "Assignment Submission" Google Sheet (bookmarked in your team's slack channel) and follow the instructions there. It will look something like this:
    
     ![Submission Sheet](./assets/submission-sheet.png)
@@ -39,4 +57,3 @@ If you're an Assignment Reviewer, follow these steps each week:
   >
   > If you are not requesting any specific changes, it's ok to leave comments, but be sure to approve the PR as well so we don't leave anyone hanging.
 4. Once any discussion/changes have been completed, it's up to the trainee to merge the PR and set it to green.
-
