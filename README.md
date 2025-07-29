@@ -11,22 +11,39 @@ If this is your first time using this repo, follow these steps:
 
 1. Scroll to the top of this repo, and click "Use this template":
 
-    <img width="400" alt="use-this-template" src="https://github.com/user-attachments/assets/be998ed8-db20-4869-adac-8f5f5f352b62" />
+    ![Use Template](./assets/use-template.png)
 
 1. Follow the instructions to create a new repository under your own account, as shown below:
 
-    <img width="400" alt="create-new-repository" src="https://github.com/user-attachments/assets/1104b326-60d0-459b-ac62-ec9b2f8a37db" />
+    ![Create Repo](./assets/create-repo.png)
     
 1. After the repo has been created, clone it locally as you would with any repo (see ["Cloning a respository"](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) for help):
   
-    <img width="400" alt="clone-repo" src="https://github.com/user-attachments/assets/65a9d72f-98da-4bee-9120-f76df01d52bd" />
+    ![Clone](./assets/clone.png)
 
-### Submission process
-1. Working in your local repo, complete the week's assignments as described in the current module you are learning
-2. Push to your remote and create a PR on GitHub **by Wednesday end of day** (unless otherwise agreed)
+### Completing the assignments
+> [!TIP]
+  > Before we get into the instructions, remember that GIT has a steep learning curve, and if you get stuck, refer back to your previous GIT sessions for a refresher or reach out for help on slack.
+  >
+  > Here's some general tips to keep in mind:
+  > - Before creating a new assignment branch, always start from `main`.
+  > - Keep your local `main` up to date with the remote `main`, especially after any merges.
+  > - Write meaningful commit messages, to make it easier to follow your progress and review.
+
+#### 1. Starting your assignment
+1. Open your local assignment repo and check which branch you are on.
+2. If you're on another assignment branch, make sure any unsaved changes are committed (or discarded), and then move to `main`.
+3. If you're already on `main`, you're ready for the next step!
+4. Create a new assignment branch with the following naming scheme `module-name-weeknumber/yourname`
+
+Now you're ready to complete your assignment. Remember to commit often, with useful messages.
+
+#### 2. Submission process
+1. When you're ready to submit, make sure you're in your local repo and on the correct branch.
+2. Push to your remote and create a PR on GitHub **by Wednesday end of day** (unless otherwise agreed).
 3. Find the "Assignment Submission" Google Sheet (bookmarked in your team's slack channel) and follow the instructions there. It will look something like this:
    
-    <img width="400" alt="assignment-submission-google-sheet" src="https://github.com/user-attachments/assets/22d32be4-c405-4c7d-8ba5-abb5e8c1debe" />
+    ![Submission Sheet](./assets/submission-sheet.png)
 
 ## Mentor instructions
 ### Reviewing assignments
@@ -39,4 +56,3 @@ If you're an Assignment Reviewer, follow these steps each week:
   >
   > If you are not requesting any specific changes, it's ok to leave comments, but be sure to approve the PR as well so we don't leave anyone hanging.
 4. Once any discussion/changes have been completed, it's up to the trainee to merge the PR and set it to green.
-
