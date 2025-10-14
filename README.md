@@ -24,7 +24,7 @@ If this is your first time using this repo, follow these steps:
 ### Updating with the latest changes
 Sometimes we make changes to the assignments. If you have already forked this repo, you won't get these changes automatically. If you find that something is missing, or out of date, you can use the "Sync fork" feature on GitHub to pull in the latest changes to your own assignment repo.
 
-    ![Sync Fork](./assets/sync-fork.png)
+![Sync Fork](./assets/sync-fork.png)
 
 ### Completing the assignments
 > [!TIP]
