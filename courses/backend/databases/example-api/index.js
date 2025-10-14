@@ -5,13 +5,32 @@ const app = express();
 const port = 3000;
 
 // Database configuration
-const db = knex({
+
+// Development: local SQLite
+const developmentConfig = {
 	client: "sqlite3",
 	connection: {
 		filename: "./tasks.sqlite3",
+		useNullAsDefault: true,
 	},
-	useNullAsDefault: true,
-});
+};
+
+// Production: remote PostgreSQL
+const productionConfig = {
+	client: "pg",
+	connection: {
+		connectionString: process.env.DATABASE_URL,
+		ssl: { rejectUnauthorized: false },
+	},
+};
+
+const isProductionEnvironment = process.env.NODE_ENV === "production";
+
+// Use the right config based on environment
+const config = isProductionEnvironment ? productionConfig : developmentConfig;
+
+// Database configuration
+const db = knex(config);
 
 // Middleware
 app.use(json());
@@ -23,8 +42,18 @@ app.get("/", (req, res) => {
 // Get all users
 app.get("/api/users", async (req, res) => {
 	try {
-		const users = await db.raw("SELECT * FROM user");
-		res.json(users);
+		if (isProductionEnvironment) {
+			console.log(`Users from Postgres database: ${config.connection.connectionString}`);
+		} else {
+			console.log(`Users from SQLite: ${config.connection.filename}`);
+		}
+
+		const users = await db.raw('SELECT * FROM "user"');
+
+		// Postgres returns an object with a 'rows' property
+		// SQLite returns an array directly
+		const result = isProductionEnvironment ? users.rows : users;
+		res.json(result);
 	} catch (error) {
 		res.status(500).json({ error: error.message });
 	}
@@ -159,6 +188,4 @@ app.post("/api/tasks/:taskId/transfer-unsafe", async (req, res) => {
 	}
 });
 
-app.listen(port, () => {
-	console.log(`Listening on http://localhost:${port}`);
-});
+app.listen(port, () => {});
