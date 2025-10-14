@@ -3,15 +3,15 @@
 > Need any help with git? Feel free to reach out on [#git-support](https://hackyourfuture-cph.slack.com/archives/CU1K85X3R)
 
 ## About this repo
-This is a template repo that, as a trainee, you can copy to your own github and then submit your weekly assignments to.
+This is a template repo that, as a trainee, you can fork to your own GitHub account, so you can submit your assignments.
 
 ## Trainee instructions
 ### Set up
 If this is your first time using this repo, follow these steps:
 
-1. Scroll to the top of this repo, and click "Use this template":
+1. Scroll to the top of this repo, and click "Fork" and "Create a new fork":
 
-    ![Use Template](./assets/use-template.png)
+    ![Fork](./assets/create-fork.png)
 
 1. Follow the instructions to create a new repository under your own account, as shown below:
 
@@ -20,6 +20,11 @@ If this is your first time using this repo, follow these steps:
 1. After the repo has been created, clone it locally as you would with any repo (see ["Cloning a respository"](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) for help):
   
     ![Clone](./assets/clone.png)
+
+### Updating with the latest changes
+Sometimes we make changes to the assignments. If you have already forked this repo, you won't get these changes automatically. If you find that something is missing, or out of date, you can use the "Sync fork" feature on GitHub to pull in the latest changes to your own assignment repo.
+
+    ![Sync Fork](./assets/sync-fork.png)
 
 ### Completing the assignments
 > [!TIP]
@@ -40,7 +45,7 @@ Now you're ready to complete your assignment. Remember to commit often, with use
 
 #### 2. Submission process
 1. When you're ready to submit, make sure you're in your local repo and on the correct branch.
-2. Push to your remote and create a PR on GitHub **by Wednesday end of day** (unless otherwise agreed).
+2. Push to your remote and create a PR on GitHub **by Wednesday end of day** (unless otherwise agreed). Make sure you are creating a PR against your own repo, and not the HackYourFuture-CPH one.
 3. Find the "Assignment Submission" Google Sheet (bookmarked in your team's slack channel) and follow the instructions there. It will look something like this:
    
     ![Submission Sheet](./assets/submission-sheet.png)
