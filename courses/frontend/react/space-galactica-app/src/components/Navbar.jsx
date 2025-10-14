@@ -31,7 +31,7 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {/* TASK - React 1 week 2 */}
+          {/* Task - Week 2 */}
           {/* Create a <NavItem> component, which accepts the following:  */}
           {/* title, link, isActive  */}
           <li className={classNames(styles.navbarLinks, {
@@ -49,7 +49,7 @@ export const Navbar = () => {
           })}>
             <Link to={navbarItems[2].link}><b>03</b> NASA COLLABORATION</Link>
           </li>
-          {/* TASK - React 1 week 3 */}
+          {/* Task - Week 3 */}
           {/* replace repeating content by using navbarItems.map(() => <NavLink />) */}
         </ul>
       </nav>

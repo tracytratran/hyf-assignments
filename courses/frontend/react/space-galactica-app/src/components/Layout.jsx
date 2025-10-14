@@ -11,7 +11,7 @@ export const RootLayout = () => {
     <div className="inter">
       <Navbar />
       <Outlet />
-      {/* TASK - React 1 week 1 */}
+      {/* Task - Week 1 */}
       {/* Import and use the Footer component here */}
       {/* Footer found in the ui/Footer.js folder */}
     </div>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from './DestinationPage.module.css';
 
-// TASK - React 1 week 2
+// Task - Week 2
 // Move this to its own file
 const PlanetWishlistItem = ({
   name,
@@ -26,7 +26,7 @@ export const Destinations = () => {
   let numberOfPlanets = 0;
 
   const onAddOrRemovePlanet = (name, index) => {
-    // TASK - React 1 week 2
+    // Task - Week 2
     // Implement this function
     // If you press the "ADD PLANET" the selected planet should display "SELECTED"
     // And the counter should update, how many planets are selected (numberOfPlanets)
@@ -39,7 +39,7 @@ export const Destinations = () => {
         <h1>Travel destinations</h1>
         <section className="card">
           <h2>Wishlist</h2>
-          {/* TASK - React 1 week 2 */}
+          {/* Task - Week 2 */}
           {/* Display the number Of selected planets */}
           {/* Display the "no planets" message if it is empty! */}
           <p>No planets in wishlist :(</p>
@@ -47,10 +47,10 @@ export const Destinations = () => {
           <b>List coming soon after lesson 3!</b>
           
           {/* STOP! - this is for week 3!*/}
-          {/* TASK - React 1 week 3 */}
+          {/* Task - Week 3 */}
           {/* Import the AddWishlistItem react component */}
           {/* <AddWishlistItem /> */}
-          {/* TASK - React 1 week 3 */}
+          {/* Task - Week 3 */}
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
           {/* uncomment the following code snippet: */}
@@ -71,7 +71,7 @@ export const Destinations = () => {
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* TASK - React 1 week 2 */}
+          {/* Task - Week 2 */}
           {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
           {/* Use the README.md file for descriptions */}
           {/* Create a <PlanetCard /> component, which accepts the following properties: */}

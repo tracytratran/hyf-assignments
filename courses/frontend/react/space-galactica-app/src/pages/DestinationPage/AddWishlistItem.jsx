@@ -5,12 +5,12 @@ export const AddWishlistItem = ({
   onAddWishlistItem,
 }) => {
   const [thumbnail, onThumbnailChange] = useState('/destination/image-europa.png');
-  // TASK - React 1 week 3
+  // Task - Week 3
   // 1. Add a useState for the handling the <input id="customWishlist" type="text" />
   // 2. Connect the onThumbnailChange to the <select>
 
   const onAddItemPressed = () => {
-    // TASK - React 1 week 3
+    // Task - Week 3
     // implement this function
     // Clear the <input/> field on button press
     // pass the thumbnail and the name from the input to the onAddWishlistItem function
