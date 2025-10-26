@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <caption>
+        <h3>Available products</h3>
+      </caption>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>In Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Bowl</th>
+          <td>48,80 kr.</td>
+          <td>48</td>
+        </tr>
+        <tr>
+          <th>Cup</th>
+          <td>24,40 kr.</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <th>Plate</th>
+          <td>36,98 kr.</td>
+          <td>36</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+
+    <form>
+      <h3>Purchase Form</h3>
+      <label for="first-name">First Name</label>
+      <input
+        type="text"
+        id="first-name"
+        name="first-name"
+        placeholder="John"
+        required
+      />
+
+      <label for="last-name">Last Name</label>
+      <input
+        type="text"
+        id="last-name"
+        name="last-name"
+        placeholder="Doe"
+        required
+      />
+
+      <label for="title">Title</label>
+      <select id="title" name="title">
+        <option value="">Please choose your title</option>
+        <option value="mr">Mr</option>
+        <option value="ms">Ms</option>
+        <option value="mrs">Mrs</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        pattern=".+@example\.com"
+        placeholder="johndoe@gmail.com"
+        required
+      />
+
+      <label for="message">Your order</label>
+      <textarea id="message" name="message" rows="5" cols="30">
+Please specify what you want to buy here...</textarea
+      ><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

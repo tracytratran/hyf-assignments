@@ -1,0 +1,42 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+table {
+  width: 60vw;
+  margin: 0 auto;
+  border: 2px solid rgb(140, 140, 140);
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+}
+
+thead {
+  background-color: rgb(228, 240, 245);
+}
+
+th,
+td {
+  border: 1px solid rgb(160, 160, 160);
+  padding: 5px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin: 0 auto;
+  font-size: 0.8rem;
+}
+
+h3 {
+  text-align: center;
+}
+
+input[type="submit"] {
+  background-color: rgb(228, 240, 245);
+  border: 1px solid rgb(160, 160, 160);
+  border-radius: 3px;
+  font-weight: 500;
+}
