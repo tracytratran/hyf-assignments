@@ -10,7 +10,7 @@ const port = 3000;
 const developmentConfig = {
 	client: "sqlite3",
 	connection: {
-		filename: "./tasks.sqlite3",
+		filename: "../database/tasks.sqlite3",
 		useNullAsDefault: true,
 	},
 };
