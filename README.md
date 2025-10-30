@@ -23,7 +23,7 @@ If this is your first time using this repo, follow these steps:
 
 3. After the repo has been created, clone it locally as you would with any repo (see ["Cloning a respository"](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) for help):
 
-   ![Clone](./assets/clone.png)
+    ![Clone](./assets/clone.png)
 
 ### Updating with the latest changes
 Sometimes we make changes to the assignments. If you have already forked this repo, you won't get these changes automatically. If you find that something is missing, or out of date, you can use the "Sync fork" feature on GitHub to pull in the latest changes to your own assignment repo.
@@ -32,13 +32,12 @@ Sometimes we make changes to the assignments. If you have already forked this re
 
 ### Completing the assignments
 > [!TIP]
-> Before we get into the instructions, remember that Git has a steep learning curve, and if you get stuck, refer back to your previous Git sessions for a refresher or reach out for help on slack.
->
-> Here's some general tips to keep in mind:
->
-> - Before creating a new branch for your assignment, make sure you start from `main`: `git checkout main`.
-> - Keep your local `main` up to date with the remote `main`, especially after any merges.
-> - Write meaningful commit messages, to make it easier to follow your progress and review.
+  > Before we get into the instructions, remember that Git has a steep learning curve, and if you get stuck, refer back to your previous Git sessions for a refresher or reach out for help on slack.
+  >
+  > Here's some general tips to keep in mind:
+  > - Before creating a new branch for your assignment, make sure you start from `main`: `git checkout main`.
+  > - Keep your local `main` up to date with the remote `main`, especially after any merges.
+  > - Write meaningful commit messages, to make it easier to follow your progress and review.
 
 #### 1. Starting your assignment
 1. Open your local assignment repo and check which branch you are on.
@@ -69,8 +68,8 @@ If you're an Assignment Reviewer, follow these steps each week:
 1. Find the "Assignment Submission" Google Sheet (bookmarked in the team's slack channel)
 2. Look through the relevant week/module and choose a red PR to review
 3. Once you've left your initial feedback, set it to yellow.
-   > [!TIP]
-   > You should default to use the "Request changes" option when reviewing a PR. It should be clear to the trainee when they need to change something. Once you are happy with the changes, then use "Approve".
-   >
-   > If you are not requesting any specific changes, it's ok to leave comments, but be sure to approve the PR as well so we don't leave anyone hanging.
+  > [!TIP]
+  > You should default to use the "Request changes" option when reviewing a PR. It should be clear to the trainee when they need to change something. Once you are happy with the changes, then use "Approve".
+  >
+  > If you are not requesting any specific changes, it's ok to leave comments, but be sure to approve the PR as well so we don't leave anyone hanging.
 4. Once any discussion/changes have been completed, it's up to the trainee to merge the PR and set it to green.
