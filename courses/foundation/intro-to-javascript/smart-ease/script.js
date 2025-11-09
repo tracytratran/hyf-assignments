@@ -73,6 +73,8 @@ const secondWords = [
   "System",
 ];
 const randomIndex = Math.floor(Math.random() * 10);
-const startupName = firstWords[randomIndex] + secondWords[randomIndex];
+const startupName = firstWords[randomIndex] + " " + secondWords[randomIndex];
 
-console.log(startupName);
+console.log(
+  `The startup: "${startupName}" contains ${startupName.length} characters.`
+);
