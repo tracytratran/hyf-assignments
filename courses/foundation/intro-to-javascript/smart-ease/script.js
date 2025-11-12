@@ -22,8 +22,27 @@ console.log(
 );
 
 // Housey pricey (A house price estimator)
-const housePriceOfPeter = 8 * 10 * 10 * 2.5 * 1000 + 100 * 300;
-const housePriceOfJulia = 5 * 11 * 8 * 2.5 * 1000 + 70 * 300;
+const peter = {
+  name: "Peter",
+  housesWidth: 8,
+  housesDeep: 10,
+  housesHeight: 10,
+  gardenSizeInM2: 100,
+};
+const julia = {
+  name: "Julia",
+  housesWidth: 5,
+  housesDeep: 11,
+  housesHeight: 8,
+  gardenSizeInM2: 70,
+};
+
+const housePriceOfPeter =
+  peter.housesWidth * peter.housesDeep * peter.housesHeight * 2.5 * 1000 +
+  peter.gardenSizeInM2 * 300;
+const housePriceOfJulia =
+  julia.housesWidth * julia.housesDeep * julia.housesHeight * 2.5 * 1000 +
+  julia.gardenSizeInM2 * 300;
 
 // console.log(housePriceOfPeter);
 // console.log(housePriceOfJulia);
@@ -71,8 +90,13 @@ const secondWords = [
   "Mouse",
   "System",
 ];
-const randomIndex = Math.floor(Math.random() * 10);
-const startupName = firstWords[randomIndex] + " " + secondWords[randomIndex];
+
+const randomFirstIndex = Math.floor(Math.random() * 10);
+const randomSecondIndex = Math.floor(Math.random() * 10);
+// console.log(randomFirstIndex, randomSecondIndex);
+
+const startupName =
+  firstWords[randomFirstIndex] + " " + secondWords[randomSecondIndex];
 
 console.log(
   `The startup: "${startupName}" contains ${startupName.length} characters.`
