@@ -38,7 +38,19 @@ function getEventWeekday(day) {
   const eventDayIndex = day % 7;
   const eventDay = weekdays[todayIndex + eventDayIndex];
 
-  return console.log(`The event will be held on ${eventDay}.`);
+  return `The event will be held on ${eventDay}.`;
 }
 
-getEventWeekday(11);
+console.log(getEventWeekday(11));
+
+// Weather wear
+function decideClothesToWear(temperature) {
+  if (temperature < 5) {
+    return "winter jacket, 3 layers of shirts, scarf and gloves";
+  } else if (temperature >= 5 && temperature <= 15) {
+    return "light jacket and long sleeves";
+  } else return "shorts and a t-shirt";
+}
+
+const clothesToWear = decideClothesToWear(8);
+console.log(clothesToWear);
