@@ -32,10 +32,12 @@ function getEventWeekday(day) {
     "Friday",
     "Saturday",
   ];
+
   const todayIndex = new Date().getDay();
   // console.log(todayIndex);
 
   const eventDayIndex = day % 7;
+
   const eventDay = weekdays[todayIndex + eventDayIndex];
 
   return `The event will be held on ${eventDay}.`;
@@ -57,6 +59,7 @@ console.log(clothesToWear);
 
 // Student manager
 const class07Students = [];
+
 function addStudentToClass(studentName) {
   const queenOfDenmark = "Margrethe";
 
@@ -111,3 +114,47 @@ console.log(addStudentToClass("Margrethe"));
 console.log(logNumberOfStudents());
 
 console.log(addStudentToClass("Tracy"));
+
+// Candy helper
+const candyPrices = {
+  sweet: 0.5,
+  chocolate: 0.7,
+  toffee: 1.1,
+  chewingGum: 0.03,
+};
+
+const boughtCandyPrices = [];
+
+function addCandy(candyType, weight) {
+  const candyPrice = candyPrices[candyType] * weight;
+  boughtCandyPrices.push(candyPrice);
+}
+
+addCandy("chewingGum", 20);
+addCandy("chocolate", 15);
+addCandy("toffee", 40);
+console.log(boughtCandyPrices);
+
+const amountToSpend = Math.random() * 100;
+console.log("Your amount of money to spend:", amountToSpend);
+
+function calculateAmountSpent() {
+  let sum = 0;
+  for (let i = 0; i < boughtCandyPrices.length; i++) {
+    sum += boughtCandyPrices[i];
+  }
+  return sum;
+}
+
+console.log("You have spent:", calculateAmountSpent());
+
+function canBuyMoreCandy() {
+  const totalAmountSpent = calculateAmountSpent();
+  return totalAmountSpent < amountToSpend;
+}
+
+console.log(
+  canBuyMoreCandy()
+    ? "You can buy more, please do so!"
+    : "Enough candy for you!"
+);
