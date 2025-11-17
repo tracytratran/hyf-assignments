@@ -140,8 +140,16 @@ console.log("Your amount of money to spend:", amountToSpend);
 
 function calculateAmountSpent() {
   let sum = 0;
-  for (let i = 0; i < boughtCandyPrices.length; i++) {
+  // for loop
+  // for (let i = 0; i < boughtCandyPrices.length; i++) {
+  //   sum += boughtCandyPrices[i];
+  // }
+
+  // while loop
+  let i = 0;
+  while (i < boughtCandyPrices.length) {
     sum += boughtCandyPrices[i];
+    i++;
   }
   return sum;
 }
