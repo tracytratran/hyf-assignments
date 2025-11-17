@@ -54,3 +54,60 @@ function decideClothesToWear(temperature) {
 
 const clothesToWear = decideClothesToWear(8);
 console.log(clothesToWear);
+
+// Student manager
+const class07Students = [];
+function addStudentToClass(studentName) {
+  const queenOfDenmark = "Margrethe";
+
+  if (studentName === "") {
+    return "Please enter the student's name!";
+  }
+
+  if (class07Students.includes(studentName)) {
+    return `Student ${studentName} is already in the class.`;
+  }
+
+  if (class07Students.length >= 6) {
+    if (studentName !== queenOfDenmark) {
+      return "Cannot add more students to class 07";
+    }
+  }
+
+  class07Students.push(studentName);
+  return class07Students;
+}
+
+function getNumberOfStudents() {
+  return class07Students.length;
+}
+
+function logNumberOfStudents() {
+  return `Class 07 has ${
+    getNumberOfStudents() !== 0
+      ? `${getNumberOfStudents()} students`
+      : "no student"
+  }.`;
+}
+
+// Test function addStudentToClass and log the number of students
+console.log(addStudentToClass(""));
+console.log(logNumberOfStudents());
+
+console.log(addStudentToClass("Andrii"));
+console.log(addStudentToClass("Kadri"));
+console.log(addStudentToClass("Andrii"));
+console.log(addStudentToClass("Minhaj"));
+console.log(logNumberOfStudents());
+
+console.log(addStudentToClass("Reza"));
+console.log(addStudentToClass("Matea"));
+console.log(addStudentToClass("Saranya"));
+console.log(addStudentToClass("Juliya"));
+console.log(logNumberOfStudents());
+
+console.log(addStudentToClass("Margrethe"));
+console.log(addStudentToClass("Margrethe"));
+console.log(logNumberOfStudents());
+
+console.log(addStudentToClass("Tracy"));
