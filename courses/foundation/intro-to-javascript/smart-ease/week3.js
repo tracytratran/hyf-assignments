@@ -101,3 +101,79 @@ function convertDurationIntoMinutes(duration) {
 }
 
 logOutSeriesText(seriesDurations);
+
+// SMART-EASE
+
+// NOnoN0nOYes (Note taking app)
+// Save a note
+const notes = [];
+
+function saveNote(content, id) {
+  if (typeof content !== "string") return;
+  if (typeof id !== "number") return;
+  notes.push({ content, id });
+}
+
+saveNote("Do HYF assignment");
+saveNote(0);
+saveNote("Pick up groceries", 1);
+saveNote("Do laundry", 2);
+console.log(notes);
+
+// Get a note
+function getNote(id) {
+  if (typeof id !== "number" || isNaN(id)) {
+    console.error("Not a valid id!");
+    return;
+  }
+
+  for (const note of notes) {
+    if (id === note.id) {
+      return note;
+    }
+  }
+  return console.error("Note not found!");
+}
+
+// getNote();
+// getNote("str");
+// getNote(3);
+
+const firstNote = getNote(1);
+console.log(firstNote);
+
+// Log out notes
+function logOutNotesFormatted() {
+  for (const note of notes) {
+    console.log(
+      `The note with id: ${note.id}, has the following note text: ${note.content}`
+    );
+  }
+}
+
+logOutNotesFormatted();
+
+// Unique feature
+// Change existing note's content
+function changeNoteContent(id, newContent) {
+  if (typeof id !== "number" || isNaN(id)) {
+    console.error("Not a valid id!");
+    return;
+  }
+
+  if (typeof newContent !== "string" || newContent.trim() === "") {
+    console.warn("Please add a valid new content!");
+    return;
+  }
+
+  for (const note of notes) {
+    if (id === note.id) {
+      note.content = newContent;
+      return note;
+    }
+  }
+  return console.error("Note not found!");
+}
+
+const revisedNote = changeNoteContent(1, "Do HYF assignment");
+console.log(revisedNote);
