@@ -153,8 +153,7 @@ function logOutNotesFormatted() {
 
 logOutNotesFormatted();
 
-// Unique feature
-// Change existing note's content
+// Unique feature - Update existing note's content
 function changeNoteContent(id, newContent) {
   if (typeof id !== "number" || isNaN(id)) {
     console.error("Not a valid id!");
@@ -177,3 +176,96 @@ function changeNoteContent(id, newContent) {
 
 const revisedNote = changeNoteContent(1, "Do HYF assignment");
 console.log(revisedNote);
+
+// CactusIO-interactive (Smart phone usage app)
+// Add an activity
+const activities = [];
+
+function addActivity(date, activity, duration) {
+  activities.push({ date, activity, duration });
+}
+
+addActivity("22.11.2025", "Youtube", 30);
+addActivity("24.11.2025", "Facebook", 15);
+
+console.log(activities);
+
+// Show activity status
+function getToday() {
+  return new Date().toLocaleDateString("da-DK", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+const today = getToday();
+console.log(today);
+
+const limitPhoneUsage = Math.floor(Math.random() * 100);
+console.log(`Limit phone usage is ${limitPhoneUsage} min.`);
+
+function showStatus(activitiesArray) {
+  if (activitiesArray.length === 0) {
+    console.log("Add some activities before calling showStatus");
+    return;
+  }
+
+  // OLD VERSION
+  //   let sumDuration = 0;
+  //   for (const activity of activitiesArray) {
+  //     sumDuration += activity.duration;
+  //   }
+
+  //   console.log(
+  //     `You have added ${activitiesArray.length} activities. They amount to ${sumDuration} min. of usage.`
+  //   );
+
+  // UPDATED VERSION
+  let sumDurationToday = 0;
+  let countActivitiesToday = 0;
+  for (const activity of activitiesArray) {
+    if (activity.date === today) {
+      sumDurationToday += activity.duration;
+      countActivitiesToday += 1;
+    }
+  }
+
+  console.log(
+    countActivitiesToday !== 0
+      ? `You have added ${countActivitiesToday} activities on ${today}. They amount to ${sumDurationToday} min. of usage.`
+      : "You have no activities today."
+  );
+
+  console.log(setLimit(sumDurationToday, limitPhoneUsage));
+}
+
+// Set usage limit
+function setLimit(duration, limit) {
+  return duration >= limit
+    ? "You have reached your limit, no more smart phoning for you!"
+    : "";
+}
+
+addActivity(today, "Instagram", 10);
+addActivity(today, "LinkedIn", 40);
+
+showStatus(activities);
+
+// Extra feature - Calculate the activity a user has spent the most time on
+function getMaxDuration(activitiesArray) {
+  if (activitiesArray.length === 0) {
+    return;
+  }
+
+  let maxDuration = activitiesArray[0].duration;
+  let mostSpentActivity = activitiesArray[0].activity;
+  for (const activity of activitiesArray) {
+    if (activity.duration > maxDuration) {
+      maxDuration = activity.duration;
+      mostSpentActivity = activity.activity;
+    }
+  }
+  return `You have spent the most time on ${mostSpentActivity}.`;
+}
+
+console.log(getMaxDuration(activities));
