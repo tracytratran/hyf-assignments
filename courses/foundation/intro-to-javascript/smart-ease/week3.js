@@ -34,7 +34,9 @@ const travelTime = function (distance, speed) {
   return hourInText + " and " + minuteInText;
 };
 
-const pluralize = (time, word) => (time > 1 ? word + "s" : word);
+const pluralize = function (time, word) {
+  return time > 1 ? word + "s" : word;
+};
 
 const travelInformation = {
   speed: 50,
