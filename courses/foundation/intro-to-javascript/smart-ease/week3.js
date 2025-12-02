@@ -6,7 +6,7 @@ const names = [
   "Peter",
   "Ahmad",
   "Yana",
-  "kristina",
+  "Kristina",
   "Rasmus",
   "Samuel",
   "Katrine",
@@ -15,7 +15,9 @@ const names = [
 const nameToRemove = "Ahmad";
 const indexOfNameToRemove = names.indexOf(nameToRemove);
 
-names.splice(indexOfNameToRemove, 1);
+if (indexOfNameToRemove !== -1) {
+  names.splice(indexOfNameToRemove, 1);
+}
 console.log(names);
 
 // When will we be there??
@@ -91,9 +93,7 @@ function logOutSeriesText(seriesDurationsArray) {
       `${seriesDurationItem.title} took ${percentage.toFixed(3)}% of my life.`
     );
   }
-  return console.log(
-    `In total, that is ${sumPercentage.toFixed(3)}% of my life.`
-  );
+  console.log(`In total, that is ${sumPercentage.toFixed(3)}% of my life.`);
 }
 
 function convertDurationIntoMinutes(duration) {
@@ -111,8 +111,8 @@ logOutSeriesText(seriesDurations);
 const notes = [];
 
 function saveNote(content, id) {
-  if (typeof content !== "string") return;
-  if (typeof id !== "number") return;
+  if (typeof content !== "string" || content.trim() === "") return;
+  if (typeof id !== "number" || isNaN(id)) return;
   notes.push({ content, id });
 }
 
@@ -134,7 +134,7 @@ function getNote(id) {
       return note;
     }
   }
-  return console.error("Note not found!");
+  console.error("Note not found!");
 }
 
 // getNote();
@@ -226,7 +226,7 @@ function showStatus(activitiesArray) {
   let sumDurationToday = 0;
   let countActivitiesToday = 0;
   for (const activity of activitiesArray) {
-    if (activity.date === today) {
+    if (activity.date === getToday()) {
       sumDurationToday += activity.duration;
       countActivitiesToday += 1;
     }
@@ -234,7 +234,7 @@ function showStatus(activitiesArray) {
 
   console.log(
     countActivitiesToday !== 0
-      ? `You have added ${countActivitiesToday} activities on ${today}. They amount to ${sumDurationToday} min. of usage.`
+      ? `You have added ${countActivitiesToday} activities on ${getToday()}. They amount to ${sumDurationToday} min. of usage.`
       : "You have no activities today."
   );
 
@@ -249,7 +249,8 @@ function setLimit(duration, limit) {
 }
 
 addActivity(today, "Instagram", 10);
-addActivity(today, "LinkedIn", 40);
+addActivity(getToday(), "LinkedIn", 40);
+console.log(activities);
 
 showStatus(activities);
 
