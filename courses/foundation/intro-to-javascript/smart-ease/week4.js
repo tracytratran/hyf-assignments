@@ -265,3 +265,181 @@ function getCardInfo(num) {
   }
 }
 getCardInfo(4781321334789876);
+
+// Voice assistant
+const user = {
+  name: "",
+  todos: [],
+};
+
+function getReply(command) {
+  if (typeof command !== "string" || command.trim() === "") {
+    return;
+  }
+
+  if (command === "Hello my name is Benjamin") {
+    sayHello(command);
+  }
+
+  if (command === "What is my name") {
+    getName();
+  }
+
+  if (command === "Add fishing to my todo") {
+    addFishingToList();
+  }
+
+  if (command === "Add singing in the shower to my todo") {
+    addSingingToList();
+  }
+
+  if (command === "Remove fishing from my todo") {
+    removeFishingFromList();
+  }
+
+  if (command === "What is on my todo?") {
+    printListInfo();
+  }
+
+  if (command === "What day is it today?") {
+    getToday();
+  }
+
+  if (command.startsWith("what is")) {
+    doSimpleMath(command);
+  }
+
+  if (command === "Set a timer for 4 minutes") {
+    setTimer();
+  }
+
+  if (command === "It's a new day") {
+    console.log("Good morning!");
+    resetList();
+    console.log("Your todos is reset for a new day!");
+  }
+}
+
+function createArrayFromString(str) {
+  const array = str.split(" ");
+  return array;
+}
+
+function sayHello(command) {
+  const arrayCommand = createArrayFromString(command);
+  const indexOfName = arrayCommand.indexOf("Benjamin");
+  user.name = arrayCommand.slice(indexOfName).join(" ");
+  console.log(`Nice to meet you, ${user.name}!`);
+}
+
+function getName() {
+  console.log(user.name ?? "You haven't written your name!");
+}
+
+function addFishingToList() {
+  if (!user.todos.includes("fishing")) {
+    user.todos.push("fishing");
+    console.log("Fishing added to your todo");
+  }
+}
+
+function addSingingToList() {
+  if (!user.todos.includes("singing in the shower")) {
+    user.todos.push("singing in the shower");
+  }
+}
+
+function removeFishingFromList() {
+  const indexOfFishing = user.todos.indexOf("fishing");
+  if (indexOfFishing !== -1) {
+    user.todos.splice(indexOfFishing, 1);
+    console.log("Removed fishing from your todo");
+  }
+}
+
+function printListInfo() {
+  const listLength = user.todos.length;
+  console.log(
+    `You have ${listLength} ${
+      listLength > 1 ? "todos" : "todo"
+    } - ${user.todos.join(" and ")}.`
+  );
+}
+
+function getToday() {
+  console.log(
+    `Today is ${new Date().toLocaleDateString(undefined, {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })}.`
+  );
+}
+
+function doSimpleMath(command) {
+  const arrayCommand = createArrayFromString(command);
+  const startIndexOfOperation = arrayCommand.indexOf("is") + 1;
+  const arrayOperation = arrayCommand.slice(startIndexOfOperation);
+  const leftNum = Number(arrayOperation[0]);
+  const rightNum = Number(arrayOperation[2]);
+  const operator = arrayOperation[1];
+  switch (operator) {
+    case "+":
+      console.log(leftNum + rightNum);
+      break;
+    case "-":
+      console.log(leftNum - rightNum);
+      break;
+    case "*":
+      console.log(leftNum * rightNum);
+      break;
+    case "/":
+      console.log(leftNum / rightNum);
+      break;
+    case "%":
+      console.log(leftNum % rightNum);
+      break;
+  }
+}
+
+function setTimer() {
+  const timeInMinutes = 4;
+  const millisecondsInASecond = 1000;
+  const secondsInAMinute = 60;
+  const millisecondsInAMinute = millisecondsInASecond * secondsInAMinute;
+
+  console.log("Timer set for 4 minutes");
+  setTimeout(() => {
+    console.log("Timer done");
+  }, timeInMinutes * millisecondsInAMinute);
+}
+
+function resetList() {
+  user.todos = [];
+}
+
+getReply("Hello my name is Benjamin");
+
+getReply("What is my name");
+
+getReply("Add fishing to my todo");
+getReply("Add fishing to my todo");
+console.log(user.todos);
+
+getReply("Add singing in the shower to my todo");
+console.log(user.todos);
+
+getReply("Remove fishing from my todo");
+console.log(user.todos);
+
+getReply("What is on my todo?");
+
+getReply("What day is it today?");
+
+getReply("what is 3 + 3");
+getReply("what is 4 * 12");
+
+// getReply("Set a timer for 4 minutes");
+
+getReply("It's a new day");
+console.log(user.todos);
