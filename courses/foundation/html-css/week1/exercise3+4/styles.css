@@ -27,7 +27,7 @@ nav {
 }
 
 nav a {
-  color: #3a994a;
+  color: #3a6299;
 }
 
 nav a:hover {
@@ -39,8 +39,14 @@ a {
   text-decoration: none;
 }
 
+a:focus,
+.btn-linkedin:focus {
+  outline: 2px solid #29627e;
+  outline-offset: 3px;
+}
+
 .btn-linkedin {
-  background-color: #3a994a;
+  background-color: #3a6299;
   padding: 0.5rem;
   border-radius: 0.25rem;
   font-size: small;
@@ -48,11 +54,11 @@ a {
 }
 
 .btn-linkedin:hover {
-  background-color: #3e8e41;
+  background-color: #265ead;
 }
 
 .btn-linkedin:active {
-  background-color: #3e8e41;
+  background-color: #265ead;
   box-shadow: 0 0.25rem #eeeeee;
   transform: translateY(4px);
 }
@@ -61,10 +67,10 @@ a {
   background-color: #eeeeee;
   padding: 0.5rem;
   border-radius: 0.5rem;
+}
 
-  p {
-    text-align: justify;
-  }
+#latest-post p {
+  text-align: justify;
 }
 
 aside {
