@@ -5,7 +5,7 @@
  -- 3. Find all the tasks that are marked as done.
  SELECT * FROM task INNER JOIN status ON task.status_id = status.id WHERE status.name = "Done";
  -- 4. Find all the tasks that are not marked as done.
-  SELECT * FROM task INNER JOIN status ON task.status_id = status.id WHERE status.name != "Done";
+ SELECT * FROM task INNER JOIN status ON task.status_id = status.id WHERE status.name != "Done";
  -- 5. Get all the tasks, sorted with the most recently created first.
  SELECT * FROM task ORDER BY created DESC;
  -- 6. Get the single most recently created task.
