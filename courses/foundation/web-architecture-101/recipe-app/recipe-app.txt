@@ -1,9 +1,0 @@
-### Recipe Collection App
----
-1. The recipe data is stored in the database.
-2. The frontend communicates with the backend through HTTP methods such as GET, POST, PUT and DELETE. These requests go to the backend's REST API endpoints (e.g. /api/recipes). The backend responses with JSON.
-3. When a user adds a new recipe:  
-- The frontend sends a POST request to the backend with the new recipe data in JSON format.
-- The backend receives the request, then saves the recipe data to the database. 
-- Once the data is successfully stored in the database, the database confirms to the backend, and the backend returns a success response (`201 Created`) to the frontend.
-- The frontend receives the success response and will display a successful message (or whatever action to display when an user successfully adds a new recipe). 
