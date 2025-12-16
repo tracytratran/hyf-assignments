@@ -1,0 +1,53 @@
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  width: 30vw;
+}
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-text {
+  background-color: #407f8c;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #ffffff;
+}
+
+.about-image {
+  margin: auto;
+}
+
+.interactive-button {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+button {
+  background-color: #407f8c;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+@media (min-width: 600px) {
+  .about-me {
+    flex-direction: row;
+  }
+
+  img {
+    width: 10vw;
+  }
+}
