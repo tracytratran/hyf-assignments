@@ -345,35 +345,39 @@ function getReply(command) {
   }
 
   if (command === "Hello my name is Benjamin") {
-    sayHello(command);
+    return sayHello(command);
   }
 
   if (command === "What is my name") {
-    getName();
+    return getName();
   }
 
   if (command === "Add fishing to my todo") {
-    addFishingToList();
+    return addFishingToList();
   }
 
   if (command === "Add singing in the shower to my todo") {
-    addSingingToList();
+    return addSingingToList();
   }
 
   if (command === "Remove fishing from my todo") {
-    removeFishingFromList();
+    return removeFishingFromList();
+  }
+
+  if (command === "Remove singing in the shower from my todo") {
+    return removeSingingFromList();
   }
 
   if (command === "What is on my todo?") {
-    printListInfo();
+    return printListInfo();
   }
 
   if (command === "What day is it today?") {
-    getToday();
+    return getToday();
   }
 
   if (command.startsWith("what is")) {
-    doSimpleMath(command);
+    return doSimpleMath(command);
   }
 
   if (command === "Set a timer for 4 minutes") {
@@ -381,9 +385,8 @@ function getReply(command) {
   }
 
   if (command === "It's a new day") {
-    console.log("Good morning!");
     resetList();
-    console.log("Your todos is reset for a new day!");
+    return "Good morning! Your todos is reset for a new day!";
   }
 }
 
@@ -396,51 +399,61 @@ function sayHello(command) {
   const arrayCommand = createArrayFromString(command);
   const indexOfName = arrayCommand.indexOf("Benjamin");
   user.name = arrayCommand.slice(indexOfName).join(" ");
-  console.log(`Nice to meet you, ${user.name}!`);
+  return `Nice to meet you, ${user.name}!`;
 }
 
 function getName() {
-  console.log(user.name ?? "You haven't written your name!");
+  return user.name ?? "You haven't written your name!";
 }
 
 function addFishingToList() {
-  if (!user.todos.includes("fishing")) {
-    user.todos.push("fishing");
-    console.log("Fishing added to your todo");
+  if (user.todos.includes("fishing")) {
+    return "Fishing already exists in your to-do";
   }
+
+  user.todos.push("fishing");
+  return "Fishing added to your todo";
 }
 
 function addSingingToList() {
-  if (!user.todos.includes("singing in the shower")) {
-    user.todos.push("singing in the shower");
+  if (user.todos.includes("singing in the shower")) {
+    return "Singing in the shower already exists in your to-do";
   }
+  user.todos.push("singing in the shower");
+  return "Singing in the shower added to your todo";
 }
 
 function removeFishingFromList() {
   const indexOfFishing = user.todos.indexOf("fishing");
-  if (indexOfFishing !== -1) {
-    user.todos.splice(indexOfFishing, 1);
-    console.log("Removed fishing from your todo");
+  if (indexOfFishing === -1) {
+    return "Fishing doesn't exist in your to-do";
   }
+  user.todos.splice(indexOfFishing, 1);
+  return "Removed fishing from your todo";
+}
+
+function removeSingingFromList() {
+  const indexOfSinging = user.todos.indexOf("singing in the shower");
+  if (indexOfSinging === -1) {
+    return "Singing in the shower doesn't exist in your to-do";
+  }
+  user.todos.splice(indexOfSinging, 1);
+  return "Removed singing in the shower from your todo";
 }
 
 function printListInfo() {
   const listLength = user.todos.length;
-  console.log(
-    `You have ${listLength} ${
-      listLength > 1 ? "todos" : "todo"
-    } - ${user.todos.join(" and ")}.`
-  );
+  return `You have ${listLength} ${
+    listLength > 1 ? "todos" : "todo"
+  } - ${user.todos.join(" and ")}.`;
 }
 
 function getToday() {
-  console.log(
-    `Today is ${new Date().toLocaleDateString(undefined, {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    })}.`
-  );
+  return `Today is ${new Date().toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })}.`;
 }
 
 function doSimpleMath(command) {
@@ -452,20 +465,17 @@ function doSimpleMath(command) {
   const operator = arrayOperation[1];
   switch (operator) {
     case "+":
-      console.log(leftNum + rightNum);
-      break;
+      return leftNum + rightNum;
     case "-":
-      console.log(leftNum - rightNum);
-      break;
+      return leftNum - rightNum;
     case "*":
-      console.log(leftNum * rightNum);
-      break;
+      return leftNum * rightNum;
     case "/":
-      console.log(leftNum / rightNum);
-      break;
+      return leftNum / rightNum;
     case "%":
-      console.log(leftNum % rightNum);
-      break;
+      return leftNum % rightNum;
+    default:
+      return "Invalid simple math! Please input a simple math only!";
   }
 }
 
@@ -476,6 +486,7 @@ function setTimer() {
   const millisecondsInAMinute = millisecondsInASecond * secondsInAMinute;
 
   console.log("Timer set for 4 minutes");
+
   setTimeout(() => {
     console.log("Timer done");
   }, timeInMinutes * millisecondsInAMinute);
@@ -485,28 +496,30 @@ function resetList() {
   user.todos = [];
 }
 
-getReply("Hello my name is Benjamin");
+console.log(getReply("Hello my name is Benjamin"));
 
-getReply("What is my name");
+console.log(getReply("What is my name"));
 
-getReply("Add fishing to my todo");
-getReply("Add fishing to my todo");
+console.log(getReply("Add fishing to my todo"));
+console.log(getReply("Add fishing to my todo"));
 console.log(user.todos);
 
-getReply("Add singing in the shower to my todo");
+console.log(getReply("Add singing in the shower to my todo"));
 console.log(user.todos);
 
-getReply("Remove fishing from my todo");
+console.log(getReply("Remove fishing from my todo"));
 console.log(user.todos);
 
-getReply("What is on my todo?");
+// console.log(getReply("Remove singing in the shower from my todo"));
 
-getReply("What day is it today?");
+console.log(getReply("What is on my todo?"));
 
-getReply("what is 3 + 3");
-getReply("what is 4 * 12");
+console.log(getReply("What day is it today?"));
+
+console.log(getReply("what is 3 + 3"));
+console.log(getReply("what is 4 * 12"));
 
 // getReply("Set a timer for 4 minutes");
 
-getReply("It's a new day");
+console.log(getReply("It's a new day"));
 console.log(user.todos);
