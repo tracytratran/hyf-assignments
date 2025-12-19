@@ -6,13 +6,11 @@ function getFullName(
   useFormalName = false,
   gender
 ) {
-  const fullNameFormat = firstName + " " + surname;
-  if ((gender = "male")) {
-    return useFormalName ? `Lord ${fullNameFormat}` : fullNameFormat;
-  } else if ((gender = "female")) {
-    return useFormalName ? `Lady ${fullNameFormat}` : fullNameFormat;
-  } else return fullNameFormat;
-  // return useFormalName ? `Lord ${fullNameFormat}` : fullNameFormat;
+  const fullName = firstName + " " + surname;
+  const formalAddress = gender === "male" ? "Lord" : "Lady";
+  const fullNameFormat = formalAddress + " " + fullName;
+
+  return useFormalName ? fullNameFormat : fullName;
 }
 
 const fullName1 = getFullName("Peter", "Nielsen", true, "male");
@@ -51,7 +49,8 @@ function decideClothesToWear(temperature) {
     return "winter jacket, 3 layers of shirts, scarf and gloves";
   } else if (temperature >= 5 && temperature <= 15) {
     return "light jacket and long sleeves";
-  } else return "shorts and a t-shirt";
+  }
+  return "shorts and a t-shirt";
 }
 
 const clothesToWear = decideClothesToWear(8);
