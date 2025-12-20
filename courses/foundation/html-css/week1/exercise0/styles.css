@@ -6,12 +6,12 @@ figure {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
 
-figure img {
-  width: 80vw;
-}
+  img {
+    width: 80vw;
+  }
 
-figure figcaption {
-  text-align: center;
+  figcaption {
+    text-align: center;
+  }
 }
