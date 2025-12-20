@@ -1,4 +1,35 @@
 "use strict";
+// In-session
+
+// Loops
+// Exercise 3b
+const friendList = [
+  "Chris",
+  "Anne",
+  "Colin",
+  "Terri",
+  "Phil",
+  "Lola",
+  "Sam",
+  "Kay",
+  "Bruce",
+];
+
+function countNamesWithLetterA(arr) {
+  let sumNameWithLetterA = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const nameInLowerCase = arr[i].toLowerCase();
+    if (nameInLowerCase.includes("a")) {
+      sumNameWithLetterA++;
+    } else console.log(arr[i]);
+  }
+  return sumNameWithLetterA;
+}
+
+console.log(countNamesWithLetterA(friendList));
+
+// SMART-EASE
+
 // Flight booking fullname function
 function getFullName(
   firstName = "John",
