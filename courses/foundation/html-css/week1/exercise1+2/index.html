@@ -15,7 +15,7 @@
   <body>
     <table>
       <caption>
-        Available products
+        <h3>Available products</h3>
       </caption>
       <thead>
         <tr>
@@ -78,6 +78,7 @@
         type="email"
         id="email"
         name="email"
+        pattern=".+@example\.com"
         placeholder="johndoe@gmail.com"
         required
       />
@@ -85,7 +86,7 @@
       <label for="message">Your order</label>
       <textarea id="message" name="message" rows="5" cols="30">
 Please specify what you want to buy here...</textarea
-      >
+      ><br />
 
       <input type="submit" value="Submit" />
     </form>
