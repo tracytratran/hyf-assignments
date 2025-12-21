@@ -382,6 +382,7 @@ function getReply(command) {
 
   if (command === "Set a timer for 4 minutes") {
     setTimer();
+    return;
   }
 
   if (command === "It's a new day") {
