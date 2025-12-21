@@ -11,6 +11,12 @@ table {
   letter-spacing: 0.8px;
 }
 
+caption {
+  font-size: 1.1em;
+  margin: 1em;
+  font-weight: bold;
+}
+
 thead {
   background-color: rgb(228, 240, 245);
 }
@@ -35,6 +41,8 @@ h3 {
 }
 
 input[type="submit"] {
+  display: block;
+  margin-top: 1rem;
   background-color: rgb(228, 240, 245);
   border: 1px solid rgb(160, 160, 160);
   border-radius: 3px;
