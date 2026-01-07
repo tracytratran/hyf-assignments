@@ -9,6 +9,8 @@ app.get("/", (req, res) => {
 
 app.get("/currentYear", (req, res) => {
   // TODO: Implement this function to return a JSON object containing the current year
+  const currentYear = new Date().getFullYear();
+  res.send(String(currentYear));
 });
 
 app.listen(port, () => {
