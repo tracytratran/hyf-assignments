@@ -1,0 +1,68 @@
+* {
+  font-family: "Cormorant Garamond", serif;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background-color: #f6f7fb;
+}
+
+input {
+  width: 400px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+button {
+  width: 435px;
+  border: none;
+  background-color: #111827;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+input,
+button,
+p {
+  font-size: 18px;
+}
+
+input,
+button,
+div {
+  padding: 16px;
+  border-radius: 14px;
+}
+
+button,
+div,
+p {
+  margin-top: 12px;
+}
+
+h1 {
+  font-family: "Cinzel Decorative", serif;
+}
+
+h2 {
+  font-size: 24px;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+p {
+  font-family: "Cormorant Garamond", serif;
+  text-align: center;
+  line-height: 1.4;
+}
