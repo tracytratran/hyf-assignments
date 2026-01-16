@@ -1,6 +1,8 @@
+@import "./variables.css";
+
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #f9fbfd;
+  background-color: var(--background-color);
 }
 
 * {
@@ -22,8 +24,8 @@ ul {
 }
 
 li {
-  background: white;
-  border: 1px solid #e5e7eb;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
