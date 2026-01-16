@@ -19,11 +19,14 @@ ul {
   list-style-type: none;
   margin: 8px;
   padding: 0;
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  flex-wrap: wrap;
   gap: 16px;
 }
 
 li {
+  width: 300px;
   background-color: var(--background-color);
   border: 1px solid var(--border-color);
   border-radius: 16px;

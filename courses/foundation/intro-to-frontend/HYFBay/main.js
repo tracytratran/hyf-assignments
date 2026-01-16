@@ -10,9 +10,11 @@ function createEl(element) {
 function renderProductInLines(product) {
   const li = createEl("li");
   li.innerHTML = `
-    <div>
-      Product: <strong>${product.name}</strong> | Price: <strong>${product.price}</strong> | Rating: <strong>${product.rating}</strong>
-    </div>
+    <article class="product">
+      <h3 class="product-name">Product: ${product.name}</h3>
+      <p class="product-price">Price: ${product.price}</p>
+      <p class="product-rating"> Rating: ${product.rating}</p>
+    </article>
   `;
   return li;
 }
