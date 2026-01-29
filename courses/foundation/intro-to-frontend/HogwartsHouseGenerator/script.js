@@ -1,5 +1,4 @@
 "use strict";
-const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
 const hogwartsHouses = [
   {
@@ -46,6 +45,10 @@ const hogwartsHouses = [
   },
 ];
 
+function $(selector) {
+  return document.querySelector(selector);
+}
+
 function createEl(element) {
   return document.createElement(element);
 }
@@ -72,12 +75,12 @@ function main() {
     }
 
     const randomHouse =
-      hogwartsHouses[Math.floor(Math.random() * houses.length)];
+      hogwartsHouses[Math.floor(Math.random() * hogwartsHouses.length)];
 
     div.innerHTML = `
         <div style = 'background-color: ${randomHouse.themeColor}; color: ${
-      randomHouse.themeTextColor
-    }'>
+          randomHouse.themeTextColor
+        }'>
             <h2>${userName} belongs in ${randomHouse.name}!</h2>
             <img src="./images/${randomHouse.id}.jpeg" />
             <p>${randomHouse.description}</p>
@@ -86,7 +89,16 @@ function main() {
     `;
   }
 
+  // Generate Hogwart house through clicking the button
   button?.addEventListener("click", getUserName);
+
+  // Generate Hogwart house through pressing Enter
+  $("#user-name").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      getUserName();
+    }
+  });
 }
 
 main();
