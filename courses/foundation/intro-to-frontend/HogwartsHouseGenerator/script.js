@@ -45,6 +45,10 @@ const hogwartsHouses = [
   },
 ];
 
+function getRandomIndex(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function $(selector) {
   return document.querySelector(selector);
 }
@@ -60,43 +64,51 @@ function main() {
 
   const button = createEl("button");
   document.body.appendChild(button);
-  if (button) {
-    button.textContent = "Click me to select your House";
-  }
+  button.textContent = "Click me to select your House";
 
   const div = createEl("div");
   document.body.appendChild(div);
 
-  function getUserName() {
+  let currentChosenHouse;
+
+  function generateHogwarsHouse() {
     const userName = document.getElementById("user-name").value;
     if (!userName) {
       console.error("Please input your name!");
       return;
     }
 
-    const randomHouse =
-      hogwartsHouses[Math.floor(Math.random() * hogwartsHouses.length)];
+    let randomHouse = getRandomIndex(hogwartsHouses);
+
+    while (currentChosenHouse === randomHouse) {
+      randomHouse = getRandomIndex(hogwartsHouses);
+    }
+
+    const { id, name, description, traits, themeColor, themeTextColor } =
+      randomHouse;
 
     div.innerHTML = `
-        <div style = 'background-color: ${randomHouse.themeColor}; color: ${
-          randomHouse.themeTextColor
-        }'>
-            <h2>${userName} belongs in ${randomHouse.name}!</h2>
-            <img src="./images/${randomHouse.id}.jpeg" />
-            <p>${randomHouse.description}</p>
-            <p>${randomHouse.traits.join(" • ")}</p>
+        <div style = 'background-color: ${themeColor}; color: ${themeTextColor}'>
+            <h2>${userName} belongs in ${name}!</h2>
+            <img src="./images/${id}.jpeg" />
+            <p>${description}</p>
+            <p>${traits.join(" • ")}</p>
         </div>
     `;
+
+    currentChosenHouse = randomHouse;
+
+    button.textContent = "I want to try again!";
   }
 
   // Generate Hogwart house through clicking the button
-  button?.addEventListener("click", getUserName);
+  button.addEventListener("click", generateHogwarsHouse);
 
   // Generate Hogwart house through pressing Enter
   $("#user-name").addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      getUserName();
+      generateHogwarsHouse();
     }
   });
 }
