@@ -69,12 +69,22 @@ function main() {
   const div = createEl("div");
   document.body.appendChild(div);
 
+  const snackbar = createEl("div");
+  document.body.appendChild(snackbar);
+  snackbar.textContent = "You forgot to input your name!";
+  snackbar.id = "snackbar";
+
   let currentChosenHouse;
 
   function generateHogwarsHouse() {
     const userName = document.getElementById("user-name").value;
     if (!userName) {
-      console.error("Please input your name!");
+      if (!snackbar.classList.contains("show")) {
+        snackbar.className = "show";
+        setTimeout(function () {
+          snackbar.classList.remove("show");
+        }, 3000);
+      }
       return;
     }
 
