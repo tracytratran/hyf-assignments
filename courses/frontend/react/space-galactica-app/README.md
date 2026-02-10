@@ -23,9 +23,10 @@ Galactica is a space travel application built with React. This project aims to t
 Throughout the weeks you will be adding new features to this existing application.
 For your tasks you should be searching for the following in the code:
 
-- Tasks for week 1: `Task - Week 1`
-- Tasks for week 2: `Task - Week 2`
-- Tasks for week 3: `Task - Week 3`
+- Tasks for week 1: `🧑🏽‍🚀 Task - Week 1`
+- Tasks for week 2: `🧑🏽‍🚀 Task - Week 2`
+- Tasks for week 3: `🧑🏽‍🚀 Task - Week 3`
+- Tasks for week 4: `🧑🏽‍🚀 Task - Week 4`
 
 The comments you find will instruct you on how to complete the tasks each week.
 
