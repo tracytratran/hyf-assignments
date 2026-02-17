@@ -1,6 +1,8 @@
+@import "./variables.css";
+
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #f9fbfd;
+  background-color: var(--background-color);
 }
 
 * {
@@ -15,6 +17,20 @@ h2 {
 
 ul {
   list-style-type: none;
-  margin: 0;
+  margin: 8px;
   padding: 0;
+  /* display: grid; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+li {
+  width: 300px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: transform 120ms ease, box-shadow 120ms ease;
 }
