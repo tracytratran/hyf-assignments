@@ -1,5 +1,7 @@
 Pak choi
 Spinach
-Carrot
+Cabbage
 Zucchini
 Cucumber
+Potato
+Broccoli
