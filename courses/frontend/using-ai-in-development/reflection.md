@@ -1,21 +1,56 @@
-### Reflection
+### Part A: Review and Improve Portfolio
 
 ---
 
-1. From the assignment, I learned that AI can really be annoying with suggestions (totally off the topic when I don't ask for), but can be such a good teacher if I ask the right questions and ban them from giving me direct solutions. So far, they are two things I learned deeply from AI in the assignment task this week.
+2. Improvements:
 
-2. I need to correct almost every Copilot's autocompletion in 2 files: `index.html` and `styles.css` as it suggests most frequently used lines of codes, which are not what I need or care about at the moment.
+- Avoid inline `onClick` handler in `index.html` by moving the event listener into JS file to keep code cleaner.
 
-3. I was not confident with adding interactivity through a button in this assignment. If I had used Copilot to generate codes for me, I would have understood but I didn't feel like I would remember this for long and would keep being back asking the same question in the future (like I don't own the codes). However, from what I have learned in class, I tried a different approach. I treated Copilot and ChatGPT (yes I used both) as my mentor/teacher and asked them the issue I faced.
-   - This was how I started as I was so confused what I missed.
+- Check that the element exists before using it.
 
-     <img src="assets/images/Screenshot 2025-11-04 at 21.27.12.png" alt="Screenshot of my questions to chatGPT">
+- Improve text and background contrast for accessibility.
 
-   - And when it came back with questions only, I became clearer about what I missed to complete the task and what to look for. The Q&A approach enabled me to think and figure out the way to do the task with right questions asked. I know better and will for sure remember deeper about how to get a random color using JavaScript from now on.
+4. ASCII diagram:
 
-4. I think if I rely heavily on AI tools when learning at HackYourFuture, there will be of course significant risks:
-   - I will not own the code I have written, thus will not grow and become better than I was day 1 at HackYourFuture.
+```
+using-ai-in-development/
+├── reflection.md
+├── index.html
+├── styles.css
+├── script.js
+└── assets/
+│   └── images/
+│       └── tracy.png
+```
 
-   - I will waste so much time of myself, HYF mentors and other people trying to helping me in this journey with HYF.
+5. Reflections on what I have learned from the process of including AI in reviewing and improving codes:
 
-   - I will eventually can't work without AI, thus will not be skillful and confident enough to secure a place in Software Development.
+- I learned to review my codes and identify where I can improve (both through AI feedback as well as my own analysis and practice)
+
+- I learned to proofread the feedback given by AI. I always verify that the feedback and suggestions are valid instead of blindly following them.
+
+- Treating AI as a mentor while still owning my codes helps me improve my logical thinking, then implement code more effectively and manage code that is easier to read and maintain.
+
+### Part B: Ethics and Risks
+
+---
+
+1. Skill degration:
+
+I understand that if I rely heavily on AI in development, I will skip the learning process, especially when I am still early in my development career. In that case, I may not take time to think, including analyzing the task, breaking it down into small subtasks and solving the problems myself. This would mean the code I have is not owned by me, and I would miss the opportunity to practice and improve my development skills.
+
+What I would do (and have been doing) to mitigate this is to use AI as a mentor (for now) and later, learning assistant. Instead of asking AI for direct solutions, I first take some time to carefully read the tasks and fully understand the requirements. After that, I break down the task into subtasks and take notes some ideas for possible approaches before actually coding. If I get stuck at any point when writing code, I first try to debug the error. If that doesn't work, I ask AI for the error I have along with my guess of the root cause or a possible solution that I am unsure about or have already tried but failed. AI then asks me guiding questions and lets me answer that to finally come up with the solution on my own.
+
+I apply the same process when using AI for code review and improvement.
+
+2. Accuracy and hallucinations:
+
+AI can generate code that looks correct but may have logic errors, wrong assumptions or too complicated implementation. This can happen because AI may lack the full context of the problem or the prompts I write are not precise enough.
+
+To reduce this risk, I can review the code it provides, test it and verify if the code is valid and works as expected in the specific context.
+
+3. License compliance:
+
+I understand that AI models are trained on large amount of public data, including open source code with licenses. Therefore, it may generate code copied from open souce projects with licenses. This can be serious and lead to legal issues.
+
+Similar to what I do to reduce the second risk when using AI in development, I will proofread the code generated by AI carefully and check if it has licenses or not before I process further for my own projects.
