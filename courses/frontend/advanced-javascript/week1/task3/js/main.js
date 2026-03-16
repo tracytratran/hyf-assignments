@@ -3,12 +3,24 @@ import { createElement, getElementById } from "./utils.js";
 const result = getElementById("result");
 const resultLabel = getElementById("resultLabel");
 const allMoviesBtn = getElementById("all-movies");
+const shortTitleMoviesBtn = getElementById("short-title-movies");
+const longTitleMoviesBtn = getElementById("long-title-movies");
 
 let movies = [];
 
 allMoviesBtn.addEventListener("click", () => {
   setActive(allMoviesBtn);
   showAllMovies();
+});
+
+shortTitleMoviesBtn.addEventListener("click", () => {
+  setActive(shortTitleMoviesBtn);
+  showMoviesWithShortTitle();
+});
+
+longTitleMoviesBtn.addEventListener("click", () => {
+  setActive(longTitleMoviesBtn);
+  showMoviesWithLongTitle();
 });
 
 async function fetchMovieData() {
@@ -63,4 +75,28 @@ function setActive(clickedBtn) {
   }
 
   clickedBtn.classList.add("active");
+}
+
+function showMoviesWithShortTitle() {
+  resultLabel.textContent = "Result: Movies with one-word title";
+
+  const moviesWithShortTitle = movies.filter((movie) => {
+    const movieTitleArr = movie.title.split(" ");
+
+    return movieTitleArr.length === 1 ? movie : null;
+  });
+
+  renderCards(moviesWithShortTitle);
+}
+
+function showMoviesWithLongTitle() {
+  resultLabel.textContent = "Result: Movies with title more than 3 words";
+
+  const moviesWithLongTitle = movies.filter((movie) => {
+    const movieTitleArr = movie.title.split(" ");
+
+    return movieTitleArr.length > 3 ? movie : null;
+  });
+
+  renderCards(moviesWithLongTitle);
 }
