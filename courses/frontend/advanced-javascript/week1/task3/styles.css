@@ -1,0 +1,118 @@
+:root {
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  --color-blue-50: #e0f2fe;
+  --color-blue-700: #0369a1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--color-neutral-50);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--color-neutral-80);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.intro {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--color-neutral-500);
+}
+
+.buttons {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.buttons button {
+  padding: 0.6rem 1rem;
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-neutral-600);
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background: var(--color-neutral-100);
+  border-color: var(--color-neutral-400);
+  color: var(--color-neutral-700);
+}
+
+.buttons button.active {
+  background: var(--color-neutral-700);
+  border-color: var(--color-neutral-700);
+  color: var(--color-neutral-0);
+}
+
+.result-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-neutral-500);
+  margin-bottom: 0.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1.25rem;
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+  margin-bottom: 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-neutral-900);
+}
+
+.card-year {
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-neutral-500);
+}
+
+.card-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.card-info span {
+  padding: 0.25rem 0.5rem;
+  background: var(--color-blue-50);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--color-blue-700);
+}
