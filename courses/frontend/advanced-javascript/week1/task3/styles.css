@@ -116,3 +116,18 @@ h1 {
   font-size: 0.75rem;
   color: var(--color-blue-700);
 }
+
+.movies-count {
+  padding: 1rem 1.25rem;
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: var(--color-neutral-700);
+}
+
+.movies-count.empty {
+  color: var(--color-neutral-400);
+}

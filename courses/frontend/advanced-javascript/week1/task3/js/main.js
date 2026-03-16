@@ -5,6 +5,7 @@ const resultLabel = getElementById("resultLabel");
 const allMoviesBtn = getElementById("all-movies");
 const shortTitleMoviesBtn = getElementById("short-title-movies");
 const longTitleMoviesBtn = getElementById("long-title-movies");
+const moviesIn1980sBtn = getElementById("1980s-movies");
 
 let movies = [];
 
@@ -21,6 +22,11 @@ shortTitleMoviesBtn.addEventListener("click", () => {
 longTitleMoviesBtn.addEventListener("click", () => {
   setActive(longTitleMoviesBtn);
   showMoviesWithLongTitle();
+});
+
+moviesIn1980sBtn.addEventListener("click", () => {
+  setActive(moviesIn1980sBtn);
+  countMoviesMadeIn1980s();
 });
 
 async function fetchMovieData() {
@@ -99,4 +105,23 @@ function showMoviesWithLongTitle() {
   });
 
   renderCards(moviesWithLongTitle);
+}
+
+function countMoviesMadeIn1980s() {
+  resultLabel.textContent = "Result: Number of movies made in 1980s";
+
+  const moviesMadeIn1980s = movies.filter(
+    (movie) => movie.year >= 1980 && movie.year <= 1989,
+  );
+
+  result.innerHTML = "";
+
+  const div = createElement("div");
+  div.className = `movies-count${moviesMadeIn1980s.length === 0 ? " empty" : ""}`;
+  div.textContent =
+    moviesMadeIn1980s.length === 0
+      ? "No movies were made in 1980s"
+      : `In 1980s, ${moviesMadeIn1980s.length} movies ${moviesMadeIn1980s.length > 1 ? "were" : "was"} made.`;
+
+  result.appendChild(div);
 }
