@@ -51,7 +51,9 @@ moviesWithDuplicatedWordInTitle.addEventListener("click", () => {
 async function fetchMovieData() {
   const res = await fetch("./movies.json");
 
-  movies = await res.json();
+  const result = await res.json();
+
+  movies = addRatingTag(result);
 
   showAllMovies();
 }
@@ -66,9 +68,10 @@ function renderMovieCard(movie) {
     <div class="card-title">${movie.title}</div>
     <div class="card-year">Year: ${movie.year}</div>
     <div class="card-info">
-        <span>Rating: ${movie.rating}</span>
-        <span>Votes: ${movie.votes}</span>
-        <span>Running times: ${movie.running_times}</span>
+      <span class="card-tag">Tag: ${movie.tag}</span>
+      <span>Rating: ${movie.rating}</span>
+      <span>Votes: ${movie.votes}</span>
+      <span>Running times: ${movie.running_times}</span>
     </div>
   `;
 
@@ -147,6 +150,23 @@ function countMoviesMadeIn1980s() {
   result.innerHTML = "";
 
   renderMoviesCount(moviesMadeIn1980s);
+}
+
+function addRatingTag(arr) {
+  return arr.map((item) => {
+    let ratingTag;
+    if (item.rating >= 7) {
+      ratingTag = "Good";
+    } else if (item.rating >= 4 && item.rating < 7) {
+      ratingTag = "Average";
+    } else if (item.rating < 4) {
+      ratingTag = "Bad";
+    }
+    return {
+      ...item,
+      tag: ratingTag,
+    };
+  });
 }
 
 function countMoviesWithSpecialKeywords() {

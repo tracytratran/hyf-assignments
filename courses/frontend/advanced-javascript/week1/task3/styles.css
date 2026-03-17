@@ -13,6 +13,8 @@
 
   --color-blue-50: #e0f2fe;
   --color-blue-700: #0369a1;
+
+  --color-yellow-400: #facc15;
 }
 
 * {
@@ -115,6 +117,11 @@ h1 {
   border-radius: 4px;
   font-size: 0.75rem;
   color: var(--color-blue-700);
+}
+
+.card-info .card-tag {
+  background: var(--color-yellow-400);
+  color: var(--color-neutral-800);
 }
 
 .movies-count {
