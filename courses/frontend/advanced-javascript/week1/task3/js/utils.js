@@ -9,3 +9,19 @@ export function getElementById(elID) {
 export function isPlural(arr) {
   return arr.length > 1;
 }
+
+export function hasDuplicatedWords(arr) {
+  const duplication = new Set();
+  let isDuplicated = false;
+
+  arr.forEach((item) => {
+    if (!duplication.has(item)) {
+      duplication.add(item);
+    } else {
+      isDuplicated = true;
+      return;
+    }
+  });
+
+  return isDuplicated;
+}

@@ -1,4 +1,9 @@
-import { createElement, getElementById, isPlural } from "./utils.js";
+import {
+  createElement,
+  getElementById,
+  isPlural,
+  hasDuplicatedWords,
+} from "./utils.js";
 
 const result = getElementById("result");
 const resultLabel = getElementById("resultLabel");
@@ -7,6 +12,9 @@ const shortTitleMoviesBtn = getElementById("short-title-movies");
 const longTitleMoviesBtn = getElementById("long-title-movies");
 const moviesIn1980sBtn = getElementById("1980s-movies");
 const moviesWithSpecialKeyword = getElementById("special-keyword-movies");
+const moviesWithDuplicatedWordInTitle = getElementById(
+  "movies-with-duplicated-words-in-title",
+);
 
 let movies = [];
 
@@ -33,6 +41,11 @@ moviesIn1980sBtn.addEventListener("click", () => {
 moviesWithSpecialKeyword.addEventListener("click", () => {
   setActive(moviesWithSpecialKeyword);
   countMoviesWithSpecialKeywords();
+});
+
+moviesWithDuplicatedWordInTitle.addEventListener("click", () => {
+  setActive(moviesWithDuplicatedWordInTitle);
+  showMoviesWithDuplicatedWordInTitle();
 });
 
 async function fetchMovieData() {
@@ -150,4 +163,16 @@ function countMoviesWithSpecialKeywords() {
   result.innerHTML = "";
 
   renderMoviesCount(moviesWithSpecialKeyword);
+}
+
+function showMoviesWithDuplicatedWordInTitle() {
+  resultLabel.textContent = "Result: Movies with duplicated words in the title";
+
+  const moviesWithDuplicatedWordInTitle = movies.filter((movie) => {
+    const movieTitleArr = movie.title.split(" ");
+
+    return hasDuplicatedWords(movieTitleArr);
+  });
+
+  renderCards(moviesWithDuplicatedWordInTitle);
 }
