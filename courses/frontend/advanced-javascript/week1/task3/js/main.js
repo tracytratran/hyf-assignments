@@ -1,4 +1,4 @@
-import { createElement, getElementById } from "./utils.js";
+import { createElement, getElementById, isPlural } from "./utils.js";
 
 const result = getElementById("result");
 const resultLabel = getElementById("resultLabel");
@@ -6,6 +6,7 @@ const allMoviesBtn = getElementById("all-movies");
 const shortTitleMoviesBtn = getElementById("short-title-movies");
 const longTitleMoviesBtn = getElementById("long-title-movies");
 const moviesIn1980sBtn = getElementById("1980s-movies");
+const moviesWithSpecialKeyword = getElementById("special-keyword-movies");
 
 let movies = [];
 
@@ -27,6 +28,11 @@ longTitleMoviesBtn.addEventListener("click", () => {
 moviesIn1980sBtn.addEventListener("click", () => {
   setActive(moviesIn1980sBtn);
   countMoviesMadeIn1980s();
+});
+
+moviesWithSpecialKeyword.addEventListener("click", () => {
+  setActive(moviesWithSpecialKeyword);
+  countMoviesWithSpecialKeywords();
 });
 
 async function fetchMovieData() {
@@ -107,6 +113,17 @@ function showMoviesWithLongTitle() {
   renderCards(moviesWithLongTitle);
 }
 
+function renderMoviesCount(arr) {
+  const div = createElement("div");
+  div.className = `movies-count${arr.length === 0 ? " empty" : ""}`;
+  div.textContent =
+    arr.length === 0
+      ? "No movies"
+      : `${arr.length} movie${isPlural(arr) ? "s" : ""}`;
+
+  result.appendChild(div);
+}
+
 function countMoviesMadeIn1980s() {
   resultLabel.textContent = "Result: Number of movies made in 1980s";
 
@@ -116,12 +133,21 @@ function countMoviesMadeIn1980s() {
 
   result.innerHTML = "";
 
-  const div = createElement("div");
-  div.className = `movies-count${moviesMadeIn1980s.length === 0 ? " empty" : ""}`;
-  div.textContent =
-    moviesMadeIn1980s.length === 0
-      ? "No movies were made in 1980s"
-      : `In 1980s, ${moviesMadeIn1980s.length} movies ${moviesMadeIn1980s.length > 1 ? "were" : "was"} made.`;
+  renderMoviesCount(moviesMadeIn1980s);
+}
 
-  result.appendChild(div);
+function countMoviesWithSpecialKeywords() {
+  resultLabel.textContent =
+    "Result: Number of movies with 'Surfer', 'Alien' or 'Benjamin' keywords";
+
+  const moviesWithSpecialKeyword = movies.filter(
+    (movie) =>
+      movie.title.includes("Surfer") ||
+      movie.title.includes("Alien") ||
+      movie.title.includes("Benjamin"),
+  );
+
+  result.innerHTML = "";
+
+  renderMoviesCount(moviesWithSpecialKeyword);
 }
