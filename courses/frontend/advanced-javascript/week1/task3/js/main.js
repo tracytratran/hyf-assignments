@@ -11,8 +11,9 @@ const allMoviesBtn = getElementById("all-movies");
 const shortTitleMoviesBtn = getElementById("short-title-movies");
 const longTitleMoviesBtn = getElementById("long-title-movies");
 const moviesIn1980sBtn = getElementById("1980s-movies");
-const moviesWithSpecialKeyword = getElementById("special-keyword-movies");
-const moviesWithDuplicatedWordInTitle = getElementById(
+const ratingHigherThan6Btn = getElementById("rating-higher-than-6");
+const moviesWithSpecialKeywordBtn = getElementById("special-keyword-movies");
+const moviesWithDuplicatedWordInTitleBtn = getElementById(
   "movies-with-duplicated-words-in-title",
 );
 
@@ -38,22 +39,27 @@ moviesIn1980sBtn.addEventListener("click", () => {
   countMoviesMadeIn1980s();
 });
 
-moviesWithSpecialKeyword.addEventListener("click", () => {
-  setActive(moviesWithSpecialKeyword);
+ratingHigherThan6Btn.addEventListener("click", () => {
+  setActive(ratingHigherThan6Btn);
+  showRatingOnly();
+});
+
+moviesWithSpecialKeywordBtn.addEventListener("click", () => {
+  setActive(moviesWithSpecialKeywordBtn);
   countMoviesWithSpecialKeywords();
 });
 
-moviesWithDuplicatedWordInTitle.addEventListener("click", () => {
-  setActive(moviesWithDuplicatedWordInTitle);
+moviesWithDuplicatedWordInTitleBtn.addEventListener("click", () => {
+  setActive(moviesWithDuplicatedWordInTitleBtn);
   showMoviesWithDuplicatedWordInTitle();
 });
 
 async function fetchMovieData() {
   const res = await fetch("./movies.json");
 
-  const result = await res.json();
+  const data = await res.json();
 
-  movies = addRatingTag(result);
+  movies = addRatingTag(data);
 
   showAllMovies();
 }
@@ -78,13 +84,32 @@ function renderMovieCard(movie) {
   return div;
 }
 
-function renderCards(moviesToShow) {
+function renderRatingCard(rating) {
+  const div = createElement("div");
+  div.className = "rating";
+  div.innerHTML = `${rating}`;
+
+  return div;
+}
+
+function renderMoviesCount(arr) {
+  const div = createElement("div");
+  div.className = `movies-count ${arr.length === 0 ? "empty" : ""}`;
+  div.textContent =
+    arr.length === 0
+      ? "No movies"
+      : `${arr.length} movie${isPlural(arr) ? "s" : ""}`;
+
+  result.appendChild(div);
+}
+
+function renderCards(moviesToShow, renderFn) {
   result.innerHTML = "";
 
   const wrapper = createElement("div");
   wrapper.className = "cards";
 
-  moviesToShow.forEach((movie) => wrapper.appendChild(renderMovieCard(movie)));
+  moviesToShow.forEach((movie) => wrapper.appendChild(renderFn(movie)));
 
   result.appendChild(wrapper);
 }
@@ -92,7 +117,7 @@ function renderCards(moviesToShow) {
 function showAllMovies() {
   resultLabel.textContent = "Result: All movies";
 
-  renderCards(movies);
+  renderCards(movies, renderMovieCard);
 }
 
 function setActive(clickedBtn) {
@@ -114,7 +139,7 @@ function showMoviesWithShortTitle() {
     return movieTitleArr.length === 1 ? movie : null;
   });
 
-  renderCards(moviesWithShortTitle);
+  renderCards(moviesWithShortTitle, renderMovieCard);
 }
 
 function showMoviesWithLongTitle() {
@@ -126,18 +151,7 @@ function showMoviesWithLongTitle() {
     return movieTitleArr.length > 3 ? movie : null;
   });
 
-  renderCards(moviesWithLongTitle);
-}
-
-function renderMoviesCount(arr) {
-  const div = createElement("div");
-  div.className = `movies-count${arr.length === 0 ? " empty" : ""}`;
-  div.textContent =
-    arr.length === 0
-      ? "No movies"
-      : `${arr.length} movie${isPlural(arr) ? "s" : ""}`;
-
-  result.appendChild(div);
+  renderCards(moviesWithLongTitle, renderMovieCard);
 }
 
 function countMoviesMadeIn1980s() {
@@ -169,6 +183,18 @@ function addRatingTag(arr) {
   });
 }
 
+function showRatingOnly() {
+  resultLabel.textContent = "Result: Rating of the movies rated higher than 6";
+
+  result.innerHTML = "";
+
+  const ratingHigherThan6 = movies
+    .filter((movie) => movie.rating > 6)
+    .map((movie) => movie.rating);
+
+  renderCards(ratingHigherThan6, renderRatingCard);
+}
+
 function countMoviesWithSpecialKeywords() {
   resultLabel.textContent =
     "Result: Number of movies with 'Surfer', 'Alien' or 'Benjamin' keywords";
@@ -194,5 +220,5 @@ function showMoviesWithDuplicatedWordInTitle() {
     return hasDuplicatedWords(movieTitleArr);
   });
 
-  renderCards(moviesWithDuplicatedWordInTitle);
+  renderCards(moviesWithDuplicatedWordInTitle, renderMovieCard);
 }
