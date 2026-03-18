@@ -16,6 +16,7 @@ const moviesWithSpecialKeywordBtn = getElementById("special-keyword-movies");
 const moviesWithDuplicatedWordInTitleBtn = getElementById(
   "movies-with-duplicated-words-in-title",
 );
+const averageRatingBtn = getElementById("average-rating");
 
 let movies = [];
 
@@ -52,6 +53,11 @@ moviesWithSpecialKeywordBtn.addEventListener("click", () => {
 moviesWithDuplicatedWordInTitleBtn.addEventListener("click", () => {
   setActive(moviesWithDuplicatedWordInTitleBtn);
   showMoviesWithDuplicatedWordInTitle();
+});
+
+averageRatingBtn.addEventListener("click", () => {
+  setActive(averageRatingBtn);
+  calcAverageRating();
 });
 
 async function fetchMovieData() {
@@ -221,4 +227,20 @@ function showMoviesWithDuplicatedWordInTitle() {
   });
 
   renderCards(moviesWithDuplicatedWordInTitle, renderMovieCard);
+}
+
+function calcAverageRating() {
+  const rating = movies.map((movie) => movie.rating);
+  const sumRating = rating.reduce((acc, current) => acc + current, 0);
+  const averageRating = (sumRating / rating.length).toFixed(1);
+
+  resultLabel.textContent = "Result: Average rating of all movies";
+
+  result.innerHTML = "";
+
+  const div = createElement("div");
+  div.className = "rating";
+  div.textContent = `The average rating of all movies is ${averageRating}.`;
+
+  result.appendChild(div);
 }
