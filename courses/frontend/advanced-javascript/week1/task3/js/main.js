@@ -238,9 +238,5 @@ function calcAverageRating() {
 
   result.innerHTML = "";
 
-  const div = createElement("div");
-  div.className = "rating";
-  div.textContent = `The average rating of all movies is ${averageRating}.`;
-
-  result.appendChild(div);
+  result.appendChild(renderRatingCard(averageRating));
 }
