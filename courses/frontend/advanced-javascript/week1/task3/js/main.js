@@ -14,9 +14,10 @@ const moviesIn1980sBtn = getElementById("1980s-movies");
 const ratingHigherThan6Btn = getElementById("rating-higher-than-6");
 const moviesWithSpecialKeywordBtn = getElementById("special-keyword-movies");
 const moviesWithDuplicatedWordInTitleBtn = getElementById(
-  "movies-with-duplicated-words-in-title",
+  "duplicated-words-in-movie-title",
 );
 const averageRatingBtn = getElementById("average-rating");
+const movieTagCountBtn = getElementById("movie-tag-count");
 
 let movies = [];
 
@@ -60,6 +61,16 @@ averageRatingBtn.addEventListener("click", () => {
   calcAverageRating();
 });
 
+movieTagCountBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Number of good, average and bad movies";
+  result.innerHTML = "";
+
+  setActive(movieTagCountBtn);
+
+  const tagArr = calcTag();
+  renderCards(tagArr, renderTagCard);
+});
+
 async function fetchMovieData() {
   const res = await fetch("./movies.json");
 
@@ -92,7 +103,7 @@ function renderMovieCard(movie) {
 
 function renderRatingCard(rating) {
   const div = createElement("div");
-  div.className = "rating";
+  div.className = "card";
   div.innerHTML = `${rating}`;
 
   return div;
@@ -104,18 +115,18 @@ function renderMoviesCount(arr) {
   div.textContent =
     arr.length === 0
       ? "No movies"
-      : `${arr.length} movie${isPlural(arr) ? "s" : ""}`;
+      : `${arr.length} movie${isPlural(arr.length) ? "s" : ""}`;
 
   result.appendChild(div);
 }
 
-function renderCards(moviesToShow, renderFn) {
+function renderCards(array, renderFn) {
   result.innerHTML = "";
 
   const wrapper = createElement("div");
   wrapper.className = "cards";
 
-  moviesToShow.forEach((movie) => wrapper.appendChild(renderFn(movie)));
+  array.forEach((item) => wrapper.appendChild(renderFn(item)));
 
   result.appendChild(wrapper);
 }
@@ -202,6 +213,7 @@ function showRatingOnly() {
 }
 
 function countMoviesWithSpecialKeywords() {
+  // To-do: check case insensitive
   resultLabel.textContent =
     "Result: Number of movies with 'Surfer', 'Alien' or 'Benjamin' keywords";
 
@@ -239,4 +251,30 @@ function calcAverageRating() {
   result.innerHTML = "";
 
   result.appendChild(renderRatingCard(averageRating));
+}
+
+function renderTagCard(tag) {
+  const div = createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <div class="card-title">${tag.count} movie${isPlural(tag.count) ? "s" : ""}</div>
+    <div class="card-info">
+      <span class="card-tag">${tag.tag}</span>
+    </div>
+  `;
+
+  return div;
+}
+
+function calcTag() {
+  const tag = movies
+    .map((item) => item.tag)
+    .reduce((acc, currentTag) => {
+      acc[currentTag] = (acc[currentTag] || 0) + 1;
+      return acc;
+    }, {});
+
+  return Object.entries(tag).map(([key, value]) => {
+    return { tag: key, count: value };
+  });
 }

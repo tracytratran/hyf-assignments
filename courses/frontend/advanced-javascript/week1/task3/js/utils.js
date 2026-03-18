@@ -6,8 +6,8 @@ export function getElementById(elID) {
   return document.getElementById(elID);
 }
 
-export function isPlural(arr) {
-  return arr.length > 1;
+export function isPlural(num) {
+  return num > 1;
 }
 
 export function hasDuplicatedWords(arr) {
