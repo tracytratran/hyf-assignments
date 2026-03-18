@@ -2,6 +2,8 @@ import {
   createElement,
   getElementById,
   isPlural,
+  addEmptyClass,
+  createTextContent,
   hasDuplicatedWords,
 } from "./utils.js";
 
@@ -22,43 +24,86 @@ const movieTagCountBtn = getElementById("movie-tag-count");
 let movies = [];
 
 allMoviesBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: All movies";
+
   setActive(allMoviesBtn);
-  showAllMovies();
+  renderCards(movies, renderMovieCard);
 });
 
 shortTitleMoviesBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Movies with one-word title";
+
   setActive(shortTitleMoviesBtn);
-  showMoviesWithShortTitle();
+
+  const moviesWithShortTitle = filterMoviesByTitleLength(
+    (movieTitleCount) => movieTitleCount === 1,
+  );
+  renderCards(moviesWithShortTitle, renderMovieCard);
 });
 
 longTitleMoviesBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Movies with title more than 3 words";
+
   setActive(longTitleMoviesBtn);
-  showMoviesWithLongTitle();
+
+  const moviesWithLongTitle = filterMoviesByTitleLength(
+    (movieTitleCount) => movieTitleCount > 3,
+  );
+  renderCards(moviesWithLongTitle, renderMovieCard);
 });
 
 moviesIn1980sBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Number of movies made in 1980s";
+  result.innerHTML = "";
+
   setActive(moviesIn1980sBtn);
-  countMoviesMadeIn1980s();
+
+  const moviesMadeIn1980s = countMoviesMadeIn1980s();
+
+  const className = `movies-count ${addEmptyClass(moviesMadeIn1980s)}`;
+  const textContent = createTextContent(moviesMadeIn1980s);
+  result.appendChild(renderMovieInfo(className, textContent));
 });
 
 ratingHigherThan6Btn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Rating of the movies rated higher than 6";
+
   setActive(ratingHigherThan6Btn);
-  showRatingOnly();
+
+  const ratingHigherThan6 = showRatingOnly();
+  renderCards(ratingHigherThan6, renderRatingCard);
 });
 
 moviesWithSpecialKeywordBtn.addEventListener("click", () => {
+  resultLabel.textContent =
+    "Result: Number of movies with 'Surfer', 'Alien' or 'Benjamin' keywords";
+  result.innerHTML = "";
+
   setActive(moviesWithSpecialKeywordBtn);
-  countMoviesWithSpecialKeywords();
+
+  const moviesWithSpecialKeyword = countMoviesWithSpecialKeywords();
+
+  const className = `movies-count ${addEmptyClass(moviesWithSpecialKeyword)}`;
+  const textContent = createTextContent(moviesWithSpecialKeyword);
+  result.appendChild(renderMovieInfo(className, textContent));
 });
 
 moviesWithDuplicatedWordInTitleBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Movies with duplicated words in the title";
+
   setActive(moviesWithDuplicatedWordInTitleBtn);
-  showMoviesWithDuplicatedWordInTitle();
+
+  const moviesWithDuplicatedWordInTitle = showMoviesWithDuplicatedWordInTitle();
+  renderCards(moviesWithDuplicatedWordInTitle, renderMovieCard);
 });
 
 averageRatingBtn.addEventListener("click", () => {
+  resultLabel.textContent = "Result: Average rating of all movies";
+  result.innerHTML = "";
+
   setActive(averageRatingBtn);
-  calcAverageRating();
+  const averageRating = calcAverageRating();
+  result.appendChild(renderMovieInfo("card", averageRating));
 });
 
 movieTagCountBtn.addEventListener("click", () => {
@@ -78,7 +123,7 @@ async function fetchMovieData() {
 
   movies = addRatingTag(data);
 
-  showAllMovies();
+  renderCards(movies, renderMovieCard);
 }
 
 fetchMovieData();
@@ -101,23 +146,12 @@ function renderMovieCard(movie) {
   return div;
 }
 
-function renderRatingCard(rating) {
+function renderMovieInfo(className, textContent) {
   const div = createElement("div");
-  div.className = "card";
-  div.innerHTML = `${rating}`;
+  div.className = className;
+  div.textContent = textContent;
 
   return div;
-}
-
-function renderMoviesCount(arr) {
-  const div = createElement("div");
-  div.className = `movies-count ${arr.length === 0 ? "empty" : ""}`;
-  div.textContent =
-    arr.length === 0
-      ? "No movies"
-      : `${arr.length} movie${isPlural(arr.length) ? "s" : ""}`;
-
-  result.appendChild(div);
 }
 
 function renderCards(array, renderFn) {
@@ -131,68 +165,30 @@ function renderCards(array, renderFn) {
   result.appendChild(wrapper);
 }
 
-function showAllMovies() {
-  resultLabel.textContent = "Result: All movies";
-
-  renderCards(movies, renderMovieCard);
-}
-
 function setActive(clickedBtn) {
   const buttons = document.querySelectorAll(".buttons button");
 
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove("active");
-  }
+  buttons.forEach((button) => button.classList.remove("active"));
 
   clickedBtn.classList.add("active");
 }
 
-function showMoviesWithShortTitle() {
-  resultLabel.textContent = "Result: Movies with one-word title";
+function filterMoviesByTitleLength(conditionFn) {
+  return movies.filter((movie) => {
+    const movieTitleCount = movie.title.split(" ").length;
 
-  const moviesWithShortTitle = movies.filter((movie) => {
-    const movieTitleArr = movie.title.split(" ");
-
-    return movieTitleArr.length === 1 ? movie : null;
+    return conditionFn(movieTitleCount);
   });
-
-  renderCards(moviesWithShortTitle, renderMovieCard);
-}
-
-function showMoviesWithLongTitle() {
-  resultLabel.textContent = "Result: Movies with title more than 3 words";
-
-  const moviesWithLongTitle = movies.filter((movie) => {
-    const movieTitleArr = movie.title.split(" ");
-
-    return movieTitleArr.length > 3 ? movie : null;
-  });
-
-  renderCards(moviesWithLongTitle, renderMovieCard);
 }
 
 function countMoviesMadeIn1980s() {
-  resultLabel.textContent = "Result: Number of movies made in 1980s";
-
-  const moviesMadeIn1980s = movies.filter(
-    (movie) => movie.year >= 1980 && movie.year <= 1989,
-  );
-
-  result.innerHTML = "";
-
-  renderMoviesCount(moviesMadeIn1980s);
+  return movies.filter((movie) => movie.year >= 1980 && movie.year <= 1989);
 }
 
 function addRatingTag(arr) {
   return arr.map((item) => {
-    let ratingTag;
-    if (item.rating >= 7) {
-      ratingTag = "Good";
-    } else if (item.rating >= 4 && item.rating < 7) {
-      ratingTag = "Average";
-    } else if (item.rating < 4) {
-      ratingTag = "Bad";
-    }
+    const ratingTag =
+      item.rating >= 7 ? "Good" : item.rating < 4 ? "Bad" : "Average";
     return {
       ...item,
       tag: ratingTag,
@@ -200,57 +196,50 @@ function addRatingTag(arr) {
   });
 }
 
+function renderRatingCard(rating) {
+  const div = createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <div class="card-title">${rating.title}</div>
+    <div class="card-info">
+      <span class="card-tag">${rating.rating}</span>
+    </div>
+  `;
+
+  return div;
+}
+
 function showRatingOnly() {
-  resultLabel.textContent = "Result: Rating of the movies rated higher than 6";
-
-  result.innerHTML = "";
-
-  const ratingHigherThan6 = movies
+  return movies
     .filter((movie) => movie.rating > 6)
-    .map((movie) => movie.rating);
-
-  renderCards(ratingHigherThan6, renderRatingCard);
+    .map((movie) => {
+      return { title: movie.title, rating: movie.rating };
+    });
 }
 
 function countMoviesWithSpecialKeywords() {
-  // To-do: check case insensitive
-  resultLabel.textContent =
-    "Result: Number of movies with 'Surfer', 'Alien' or 'Benjamin' keywords";
+  const lowercasedKeywords = ["surfer", "alien", "benjamin"];
+  return movies.filter((movie) => {
+    const lowercasedTitle = movie.title.toLowerCase();
 
-  const moviesWithSpecialKeyword = movies.filter(
-    (movie) =>
-      movie.title.includes("Surfer") ||
-      movie.title.includes("Alien") ||
-      movie.title.includes("Benjamin"),
-  );
-
-  result.innerHTML = "";
-
-  renderMoviesCount(moviesWithSpecialKeyword);
+    return lowercasedKeywords.some((keyword) =>
+      lowercasedTitle.includes(keyword),
+    );
+  });
 }
 
 function showMoviesWithDuplicatedWordInTitle() {
-  resultLabel.textContent = "Result: Movies with duplicated words in the title";
-
-  const moviesWithDuplicatedWordInTitle = movies.filter((movie) => {
+  return movies.filter((movie) => {
     const movieTitleArr = movie.title.split(" ");
 
     return hasDuplicatedWords(movieTitleArr);
   });
-
-  renderCards(moviesWithDuplicatedWordInTitle, renderMovieCard);
 }
 
 function calcAverageRating() {
   const rating = movies.map((movie) => movie.rating);
   const sumRating = rating.reduce((acc, current) => acc + current, 0);
-  const averageRating = (sumRating / rating.length).toFixed(1);
-
-  resultLabel.textContent = "Result: Average rating of all movies";
-
-  result.innerHTML = "";
-
-  result.appendChild(renderRatingCard(averageRating));
+  return (sumRating / rating.length).toFixed(1);
 }
 
 function renderTagCard(tag) {
