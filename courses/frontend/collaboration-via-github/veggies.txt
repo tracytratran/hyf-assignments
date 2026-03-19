@@ -5,6 +5,3 @@ Zucchini
 Cucumber
 Potato
 Broccoli
-Kale
-Zucchini
-Cucumber
