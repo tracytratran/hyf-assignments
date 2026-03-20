@@ -20,21 +20,23 @@
 
 // UPDATED VERSION
 function fizzBuzz(num1, num2) {
+  const result = [];
   for (let i = num1; i <= num2; i++) {
     const multiplesOfThree = i % 3 === 0;
     const multiplesOfFive = i % 5 === 0;
-    if (multiplesOfThree && !multiplesOfFive) {
-      console.log("Fizz");
+    if (multiplesOfThree && multiplesOfFive) {
+      result.push("FizzBuzz");
+    } else if (multiplesOfThree && !multiplesOfFive) {
+      result.push("Fizz");
     } else if (multiplesOfFive && !multiplesOfThree) {
-      console.log("Buzz");
-    } else if (multiplesOfThree && multiplesOfFive) {
-      console.log("FizzBuzz");
-    } else console.log(i);
+      result.push("Buzz");
+    } else result.push(i);
   }
+  return result;
 }
 
-fizzBuzz(4, 12);
-fizzBuzz(5, 30);
+console.log(fizzBuzz(4, 12));
+console.log(fizzBuzz(5, 30));
 
 // Sentiment analyser
 const positiveWords = [
@@ -152,7 +154,7 @@ function getSentimentScore(str) {
 }
 
 const sentimentScoreObject = getSentimentScore(
-  "I am normally kind and joyful, but right now I am broken, chaotic and frustrated."
+  "I am normally kind and joyful, but right now I am broken, chaotic and frustrated.",
 );
 console.log(sentimentScoreObject);
 
@@ -244,94 +246,28 @@ console.log(getLongestPalindromicSubstring("abceeksskeedefaba"));
 
 // Credit card info
 function getCardInfo(num) {
+  if (typeof num !== "number" || isNaN(num)) {
+    return;
+  }
+
   const firstDigit = Number(String(num).split("")[0]);
   //   console.log(firstDigit);
+
   switch (firstDigit) {
     case 4:
-      console.log("Visa");
-      break;
+      return "Visa";
     case 5:
     case 2:
-      console.log("Mastercard");
-      break;
+      return "Mastercard";
     case 3:
-      console.log("American Express");
-      break;
+      return "American Express";
     case 6:
-      console.log("Discover");
+      return "Discover";
     default:
-      console.error("Can't recognize the credit card type!");
-      break;
+      return "Can't recognize the credit card type!";
   }
 }
-getCardInfo(4781321334789876);
-
-// Tic Tac Toe
-function getRenderGame(position) {
-  let str = "*******\n";
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      str = str + "*" + position[i][j];
-    }
-    str += "*\n";
-  }
-  str += "*******";
-  return str;
-}
-
-const position = [
-  ["x", "o", " "],
-  [" ", "o", " "],
-  [" ", "o", "x"],
-];
-console.log(getRenderGame(position));
-
-function getGameInfo(position) {
-  const winningStates = [
-    [position[0][0], position[0][1], position[0][2]],
-    [position[1][0], position[1][1], position[1][2]],
-    [position[2][0], position[2][1], position[2][2]],
-    [position[0][0], position[1][0], position[2][0]],
-    [position[0][1], position[1][1], position[2][1]],
-    [position[0][2], position[1][2], position[2][2]],
-    [position[0][0], position[1][1], position[2][2]],
-    [position[2][2], position[1][1], position[0][0]],
-  ];
-  let winner, loser;
-  for (const winningState of winningStates) {
-    if (
-      winningState[0] === winningState[1] &&
-      winningState[1] === winningState[2] &&
-      winningState[0] !== " "
-    ) {
-      winner = winningState[0];
-      break;
-    }
-  }
-
-  switch (winner) {
-    case "x":
-      loser = "o";
-      break;
-    case "o":
-      loser = "x";
-      break;
-    default:
-      loser = undefined;
-      break;
-  }
-  return { winner, loser, hasEnded: !!winner || !!loser };
-}
-
-console.log(getGameInfo(position));
-
-const position1 = [
-  ["x", "o", " "],
-  [" ", " ", " "],
-  [" ", "o", "x"],
-];
-
-console.log(getGameInfo(position1));
+console.log(getCardInfo(4781321334789876));
 
 // Voice assistant
 const user = {
