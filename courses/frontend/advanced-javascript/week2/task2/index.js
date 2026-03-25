@@ -1,7 +1,5 @@
 "use strict";
 
-// 2. Functions
-
 const textDisplayedAfter2500ms = getElement(".display-after-2500ms");
 const textDisplayedAfterDelay = getElement(".display-after-delay");
 const textDisplayedAfterDelayBtn = getElement(".display-after-delay-btn");
