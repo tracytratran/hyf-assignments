@@ -28,50 +28,98 @@ startBtn.addEventListener("click", () => {
 
 restartBtn.addEventListener("click", restartGame);
 
-function getElement(el) {
-  return document.querySelector(el);
-}
-
 function restartGame() {
   stopTimer();
+  resetState();
+  resetUI();
   confetti.clear();
-
-  timer = 0;
-  timerEl.textContent = "";
-
-  document.getElementById("time").value = "";
-
-  countPressL = 0;
-  pressL.textContent = countPressL;
-
-  countPressS = 0;
-  pressS.textContent = countPressS;
-
-  timeUpMessage.classList.add("hidden");
-}
-
-function updateTimerEl() {
-  timer = Number(document.getElementById("time").value);
-  timerEl.textContent = timer;
 }
 
 function startTimer() {
   if (intervalID) return;
 
-  updateTimerEl();
+  timer = getTimerValue();
+  renderElTextContent(timerEl, timer);
 
   intervalID = setInterval(function () {
     timer--;
-    timerEl.textContent = timer;
+    renderElTextContent(timerEl, timer);
 
     if (timer === 0) {
-      stopTimer();
-      updateResultMessage();
-      confetti.render();
-
-      document.removeEventListener("keydown", logKey);
+      endGame();
     }
   }, 1000);
+}
+
+function endGame() {
+  stopTimer();
+
+  const winner = getWinner(countPressL, countPressS);
+  showResult(winner);
+
+  document.removeEventListener("keydown", logKey);
+}
+
+function getTimerValue() {
+  return Number(document.getElementById("time").value);
+}
+
+function logKey(e) {
+  if (e.key === "l") {
+    countPressL += 1;
+    renderElTextContent(pressL, countPressL);
+  }
+
+  if (e.key === "s") {
+    countPressS += 1;
+    renderElTextContent(pressS, countPressS);
+  }
+}
+
+function getWinner(countPressL, countPressS) {
+  if (countPressL > countPressS) {
+    return "L";
+  } else if (countPressL < countPressS) {
+    return "S";
+  } else return "draw";
+}
+
+// UI rendering
+function renderElTextContent(el, content) {
+  el.textContent = content;
+}
+
+function showResult(winner) {
+  const messages = {
+    L: "L Presser wins!",
+    S: "S Presser wins!",
+    draw: "You are even!",
+  };
+
+  timeUpMessage.classList.remove("hidden");
+  timeUpMessage.textContent = "Time's up! " + messages[winner];
+  confettiEl.classList.remove("hidden");
+  confetti.render();
+
+  setTimeout(clearConfetti, 5000);
+}
+
+function resetUI() {
+  renderElTextContent(timerEl, "");
+  renderElTextContent(pressL, 0);
+  renderElTextContent(pressS, 0);
+  document.getElementById("time").value = "";
+  timeUpMessage.classList.add("hidden");
+}
+
+function clearConfetti() {
+  confetti.clear();
+  confettiEl.classList.add("hidden");
+}
+
+// Utilities
+function getElement(el) {
+  return document.querySelector(el);
 }
 
 function stopTimer() {
@@ -79,34 +127,8 @@ function stopTimer() {
   intervalID = null;
 }
 
-function logKey(e) {
-  if (e.key === "l") {
-    countPressL += 1;
-    pressL.textContent = countPressL;
-  }
-
-  if (e.key === "s") {
-    countPressS += 1;
-    pressS.textContent = countPressS;
-  }
-}
-
-function updateResultMessage() {
-  timeUpMessage.classList.remove("hidden");
-  timeUpMessage.textContent = "Time's up!";
-
-  if (countPressL > countPressS) {
-    timeUpMessage.textContent += " L Presser wins!";
-  } else if (countPressL < countPressS) {
-    timeUpMessage.textContent += " S Presser wins!";
-  } else timeUpMessage.textContent += " You are even!";
-
-  confettiEl.classList.remove("hidden");
-
-  setTimeout(clearConfetti, 5000);
-}
-
-function clearConfetti() {
-  confetti.clear();
-  confettiEl.classList.add("hidden");
+function resetState() {
+  timer = 0;
+  countPressL = 0;
+  countPressS = 0;
 }
