@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>The fastest presser in this realm</title>
+  </head>
+  <body class="flex-column justify-center items-center">
+    <h1>Fastest presser</h1>
+    <p class="timer-display">Time: <span class="timer"></span>s</p>
+    <input type="number" id="time" placeholder="Set seconds" />
+    <div class="flex-row">
+      <button class="start-btn">Start game</button>
+      <button class="restart-btn">Restart game</button>
+    </div>
+
+    <div class="time-up hidden"></div>
+
+    <div class="keys flex-row justify-center items-center">
+      <div class="flex-column justify-center items-center">
+        Press S
+        <p>Count: <span id="s">0</span></p>
+      </div>
+      <div class="flex-column justify-center items-center">
+        Press L
+        <p>Count: <span id="l">0</span></p>
+      </div>
+    </div>
+
+    <canvas id="confetti" class="hidden"></canvas>
+
+    <script src="node_modules/confetti-js/dist/index.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
