@@ -1,0 +1,55 @@
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  padding: 1.5rem;
+  background-color: #040e43;
+  color: #fff;
+}
+
+h1 {
+  margin-bottom: 5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+input,
+select {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.convert-icon {
+  align-self: center;
+  transform: rotate(90deg);
+}
+
+@media (min-width: 480px) {
+  * {
+    font-size: 1.25rem;
+  }
+
+  h1 {
+    font-size: 8rem;
+  }
+
+  form {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .convert-icon {
+    align-self: self-end;
+    transform: none;
+  }
+}
