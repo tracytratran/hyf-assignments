@@ -3,14 +3,16 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding: 1.5rem;
   background-color: #040e43;
   color: #fff;
 }
 
 h1 {
-  margin-bottom: 5rem;
-  font-size: 2rem;
+  font-size: 4rem;
   text-align: center;
 }
 
@@ -22,11 +24,32 @@ form {
   gap: 1.5rem;
 }
 
+label {
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  padding: 0.25rem;
+  background-color: #fff;
+  color: #000000;
+}
+
 input,
 select {
   border: none;
   border-radius: 0.75rem;
   padding: 1rem;
+}
+
+.currency-group {
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background: #fff;
+}
+
+.input-card {
+  border: solid 0.5px #000000;
+  border-radius: 0.25rem;
 }
 
 .convert-icon {
@@ -39,8 +62,12 @@ select {
     font-size: 1.25rem;
   }
 
+  body {
+    gap: 1.5rem;
+  }
+
   h1 {
-    font-size: 8rem;
+    font-size: 7.5rem;
   }
 
   form {
