@@ -57,6 +57,19 @@ select {
   transform: rotate(90deg);
 }
 
+.error-message {
+  text-align: center;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
 @media (min-width: 480px) {
   * {
     font-size: 1.25rem;

@@ -4,13 +4,17 @@ const inputFrom = getElementById("amount-from");
 const inputTo = getElementById("amount-to");
 const currencySelectorFrom = getElementById("currency-from");
 const currencySelectorTo = getElementById("currency-to");
-const currencyRates = await fetchExchangeRates();
+const errorMessage = getElement(".error-message");
+const retryBtn = getElement(".retry-button");
 
-let currencyFrom = "EUR";
-let currencyTo = "DKK";
-let currencyRateFrom = renderCurrencyRate(currencyRates, currencyFrom);
-let currencyRateTo = renderCurrencyRate(currencyRates, currencyTo);
+let currencyRates;
+let currencyFrom;
+let currencyTo;
+let currencyRateFrom;
+let currencyRateTo;
 let lastChanged = "from";
+
+init();
 
 inputFrom.addEventListener("input", () => {
   if (!inputFrom.value) {
@@ -48,12 +52,35 @@ currencySelectorTo.addEventListener("change", () => {
   updateInputValue();
 });
 
+retryBtn.addEventListener("click", () => {
+  errorMessage.classList.add("hidden");
+
+  init();
+});
+
 function createEl(el) {
   return document.createElement(el);
 }
 
+function getElement(el) {
+  return document.querySelector(el);
+}
+
 function getElementById(id) {
   return document.getElementById(id);
+}
+
+async function init() {
+  currencySelectorFrom.innerHTML = "";
+  currencySelectorTo.innerHTML = "";
+
+  currencyFrom = "EUR";
+  currencyTo = "DKK";
+
+  currencyRates = await fetchExchangeRates();
+
+  currencyRateFrom = renderCurrencyRate(currencyRates, currencyFrom);
+  currencyRateTo = renderCurrencyRate(currencyRates, currencyTo);
 }
 
 async function fetchExchangeRates() {
@@ -67,7 +94,8 @@ async function fetchExchangeRates() {
     return data.rates;
   } catch (error) {
     console.error(error);
-    // Then show error message to user
+
+    errorMessage.classList.remove("hidden");
   }
 }
 
