@@ -230,9 +230,7 @@ function filterMoviesWithSpecialKeywords() {
 
 function showMoviesWithDuplicatedWordInTitle() {
   return movies.filter((movie) => {
-    const movieTitleArr = movie.title.split(" ");
-
-    return hasDuplicatedWords(movieTitleArr);
+    return hasDuplicatedWords(movie.title);
   });
 }
 

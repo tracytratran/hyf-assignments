@@ -12,18 +12,6 @@ export function createTextContent(arr) {
     : `${arr.length} movie${isPlural(arr.length) ? "s" : ""}`;
 }
 
-export function hasDuplicatedWords(arr) {
-  const duplication = new Set();
-  let isDuplicated = false;
-
-  arr.forEach((item) => {
-    if (!duplication.has(item)) {
-      duplication.add(item);
-    } else {
-      isDuplicated = true;
-      return;
-    }
-  });
-
-  return isDuplicated;
+export function hasDuplicatedWords(str) {
+  return /\b(\w+)\b.*\b\1\b/i.test(str);
 }
