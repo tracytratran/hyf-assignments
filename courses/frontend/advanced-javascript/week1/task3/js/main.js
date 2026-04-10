@@ -254,12 +254,10 @@ function renderTagCard(tag) {
 }
 
 function calcTag() {
-  const tag = movies
-    .map((item) => item.tag)
-    .reduce((acc, currentTag) => {
-      acc[currentTag] = (acc[currentTag] || 0) + 1;
-      return acc;
-    }, {});
+  const tag = movies.reduce((tag, movie) => {
+    tag[movie.tag] = (tag[movie.tag] || 0) + 1;
+    return tag;
+  }, {});
 
   return Object.entries(tag).map(([key, value]) => {
     return { tag: key, count: value };
