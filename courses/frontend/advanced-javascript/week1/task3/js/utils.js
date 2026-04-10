@@ -1,11 +1,3 @@
-export function createElement(el) {
-  return document.createElement(el);
-}
-
-export function getElementById(elID) {
-  return document.getElementById(elID);
-}
-
 export function isPlural(num) {
   return num > 1;
 }

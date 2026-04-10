@@ -1,25 +1,25 @@
 import {
-  createElement,
-  getElementById,
   isPlural,
   addEmptyClass,
   createTextContent,
   hasDuplicatedWords,
 } from "./utils.js";
 
-const result = getElementById("result");
-const resultLabel = getElementById("resultLabel");
-const allMoviesBtn = getElementById("all-movies");
-const shortTitleMoviesBtn = getElementById("short-title-movies");
-const longTitleMoviesBtn = getElementById("long-title-movies");
-const moviesIn1980sBtn = getElementById("1980s-movies");
-const ratingHigherThan6Btn = getElementById("rating-higher-than-6");
-const moviesWithSpecialKeywordBtn = getElementById("special-keyword-movies");
-const moviesWithDuplicatedWordInTitleBtn = getElementById(
+const result = document.getElementById("result");
+const resultLabel = document.getElementById("resultLabel");
+const allMoviesBtn = document.getElementById("all-movies");
+const shortTitleMoviesBtn = document.getElementById("short-title-movies");
+const longTitleMoviesBtn = document.getElementById("long-title-movies");
+const moviesIn1980sBtn = document.getElementById("1980s-movies");
+const ratingHigherThan6Btn = document.getElementById("rating-higher-than-6");
+const moviesWithSpecialKeywordBtn = document.getElementById(
+  "special-keyword-movies",
+);
+const moviesWithDuplicatedWordInTitleBtn = document.getElementById(
   "duplicated-words-in-movie-title",
 );
-const averageRatingBtn = getElementById("average-rating");
-const movieTagCountBtn = getElementById("movie-tag-count");
+const averageRatingBtn = document.getElementById("average-rating");
+const movieTagCountBtn = document.getElementById("movie-tag-count");
 
 let movies = [];
 
@@ -129,7 +129,7 @@ async function fetchMovieData() {
 fetchMovieData();
 
 function renderMovieCard(movie) {
-  const div = createElement("div");
+  const div = document.createElement("div");
   div.className = "card";
 
   div.innerHTML = `
@@ -147,7 +147,7 @@ function renderMovieCard(movie) {
 }
 
 function renderMovieInfo(className, textContent) {
-  const div = createElement("div");
+  const div = document.createElement("div");
   div.className = className;
   div.textContent = textContent;
 
@@ -157,7 +157,7 @@ function renderMovieInfo(className, textContent) {
 function renderCards(array, renderFn) {
   result.innerHTML = "";
 
-  const wrapper = createElement("div");
+  const wrapper = document.createElement("div");
   wrapper.className = "cards";
 
   array.forEach((item) => wrapper.appendChild(renderFn(item)));
@@ -197,7 +197,7 @@ function addRatingTag(arr) {
 }
 
 function renderRatingCard(rating) {
-  const div = createElement("div");
+  const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
     <div class="card-title">${rating.title}</div>
@@ -243,7 +243,7 @@ function calcAverageRating() {
 }
 
 function renderTagCard(tag) {
-  const div = createElement("div");
+  const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
     <div class="card-title">${tag.count} movie${isPlural(tag.count) ? "s" : ""}</div>
