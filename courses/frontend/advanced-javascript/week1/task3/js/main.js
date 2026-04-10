@@ -58,7 +58,7 @@ moviesIn1980sBtn.addEventListener("click", () => {
 
   setActive(moviesIn1980sBtn);
 
-  const moviesMadeIn1980s = countMoviesMadeIn1980s();
+  const moviesMadeIn1980s = filterMoviesMadeIn1980s();
 
   const className = `movies-count ${addEmptyClass(moviesMadeIn1980s)}`;
   const textContent = createTextContent(moviesMadeIn1980s);
@@ -81,7 +81,7 @@ moviesWithSpecialKeywordBtn.addEventListener("click", () => {
 
   setActive(moviesWithSpecialKeywordBtn);
 
-  const moviesWithSpecialKeyword = countMoviesWithSpecialKeywords();
+  const moviesWithSpecialKeyword = filterMoviesWithSpecialKeywords();
 
   const className = `movies-count ${addEmptyClass(moviesWithSpecialKeyword)}`;
   const textContent = createTextContent(moviesWithSpecialKeyword);
@@ -181,7 +181,7 @@ function filterMoviesByTitleLength(conditionFn) {
   });
 }
 
-function countMoviesMadeIn1980s() {
+function filterMoviesMadeIn1980s() {
   return movies.filter((movie) => movie.year >= 1980 && movie.year <= 1989);
 }
 
@@ -217,7 +217,7 @@ function showRatingOnly() {
     });
 }
 
-function countMoviesWithSpecialKeywords() {
+function filterMoviesWithSpecialKeywords() {
   const lowercasedKeywords = ["surfer", "alien", "benjamin"];
   return movies.filter((movie) => {
     const lowercasedTitle = movie.title.toLowerCase();
