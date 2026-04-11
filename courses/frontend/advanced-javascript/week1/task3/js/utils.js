@@ -1,3 +1,5 @@
+"use strict";
+
 export function isPlural(num) {
   return num > 1;
 }
