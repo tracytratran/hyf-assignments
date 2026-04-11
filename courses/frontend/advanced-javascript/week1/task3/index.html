@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced JavaScript Week 1 - Assignment Task 3</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Movies</h1>
+    <p class="intro">
+      Choose one button below for different options to display the movie list.
+    </p>
+
+    <div class="buttons">
+      <button type="button" class="active" id="all-movies">
+        Show all movies
+      </button>
+      <button type="button" id="short-title-movies">
+        Movies with a short title
+      </button>
+      <button type="button" id="long-title-movies">
+        Movies with a long title
+      </button>
+      <button type="button" id="1980s-movies">Movies made in 1980s</button>
+      <button type="button" id="rating-higher-than-6">
+        Rating higher than 6
+      </button>
+      <button type="button" id="special-keyword-movies">
+        Movies with special keywords
+      </button>
+      <button type="button" id="duplicated-words-in-movie-title">
+        Movies with duplicated words in the title
+      </button>
+      <button type="button" id="average-rating">
+        Average rating of all movies
+      </button>
+      <button type="button" id="movie-tag-count">
+        Numbers of movies based on tag
+      </button>
+    </div>
+
+    <div class="result-label" id="resultLabel">Result</div>
+    <div id="result"></div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
