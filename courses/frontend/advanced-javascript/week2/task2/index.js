@@ -29,16 +29,16 @@ displayTextAfter2500ms();
 function displayTextAfterDelay(delay, stringToLog) {
   textDisplayedAfterDelay.textContent = "Loading...";
 
-  const millisecondsInAMinute = 1000;
-  const delayedTimeInMilliseconds = delay * millisecondsInAMinute;
+  const millisecondsInASecond = 1000;
+  const delayedTimeInMilliseconds = delay * millisecondsInASecond;
   setTimeout(
     () => (textDisplayedAfterDelay.textContent = stringToLog),
     delayedTimeInMilliseconds,
   );
 }
 
-// displayTextAfterDelay(5, "This string logged after 5 seconds.");
-// displayTextAfterDelay(3, "This string logged after 3 seconds.");
+displayTextAfterDelay(3, "This string logged after 3 seconds.");
+displayTextAfterDelay(5, "This string logged after 5 seconds.");
 
 textDisplayedAfterDelayBtn.addEventListener("click", () =>
   displayTextAfterDelay(5, "Called after 5 seconds"),
@@ -52,7 +52,7 @@ function planetLogFunction(planetLog) {
 }
 
 planetLogFunction(earthLogger);
-// planetLogFunction(saturnLogger);
+planetLogFunction(saturnLogger);
 
 function success(position) {
   const currentCoords = position.coords;
@@ -70,8 +70,8 @@ positionLogBtn.addEventListener("click", () =>
 );
 
 function runAfterDelay(delay, callback) {
-  const millisecondsInAMinute = 1000;
-  const delayedTimeInMilliseconds = delay * millisecondsInAMinute;
+  const millisecondsInASecond = 1000;
+  const delayedTimeInMilliseconds = delay * millisecondsInASecond;
 
   setTimeout(callback, delayedTimeInMilliseconds);
 }
