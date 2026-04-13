@@ -132,6 +132,7 @@ function resetUI() {
   renderElTextContent(pressL, 0);
   renderElTextContent(pressS, 0);
   document.getElementById("time").value = "";
+  errorMessage.classList.add("hidden");
   timeUpMessage.classList.add("hidden");
 }
 
