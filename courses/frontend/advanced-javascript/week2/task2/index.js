@@ -9,6 +9,7 @@ const longitudeLog = getElement(".longitude");
 const positionLogBtn = getElement(".location-btn");
 const runAfterDelayBtn = getElement(".run-after-delay-btn");
 const textRunAfterDelay = getElement(".run-after-delay");
+const errorMessage = getElement(".error-message");
 const textDisplayedIfDoubleClick = getElement(".double-click");
 const jokeText = getElement(".joke");
 
@@ -70,6 +71,11 @@ positionLogBtn.addEventListener("click", () =>
 );
 
 function runAfterDelay(delay, callback) {
+  if (typeof callback !== "function") {
+    console.error("Invalid callback! Callback must be a function!");
+    return;
+  }
+
   const millisecondsInASecond = 1000;
   const delayedTimeInMilliseconds = delay * millisecondsInASecond;
 
@@ -77,12 +83,31 @@ function runAfterDelay(delay, callback) {
 }
 
 runAfterDelayBtn.addEventListener("click", () => {
-  const delay = document.getElementById("delay").value;
-  runAfterDelay(
-    delay,
-    () =>
-      (textRunAfterDelay.textContent = `This text is logged after ${delay} second${delay > 1 ? "s" : ""}.`),
-  );
+  const delayValue = document.getElementById("delay").value;
+  const delay = Number(delayValue);
+
+  if (delayValue === "") {
+    errorMessage.textContent = "You shouldn't leave the input empty!";
+    console.error("Empty input!");
+    return;
+  }
+
+  if (isNaN(delay)) {
+    errorMessage.textContent = "Delay time should be a number!";
+    console.error("Input is not a number!");
+    return;
+  }
+
+  if (delay <= 0) {
+    errorMessage.textContent =
+      "Please input a valid number that is greater than 0!";
+    console.error("Input is negative!");
+    return;
+  }
+
+  runAfterDelay(delay, () => {
+    textRunAfterDelay.textContent = `This text is logged after ${delay} second${delay > 1 ? "s" : ""}.`;
+  });
 });
 
 document.addEventListener("dblclick", () => {
