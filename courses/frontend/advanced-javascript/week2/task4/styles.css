@@ -140,6 +140,7 @@ button:active {
   color: #a77b1b;
 }
 
+.error-message,
 .time-up {
   margin-bottom: 1.5rem;
   padding: 1rem 1.75rem;

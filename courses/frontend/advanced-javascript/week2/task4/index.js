@@ -4,6 +4,7 @@ const startBtn = getElement(".start-btn");
 const restartBtn = getElement(".restart-btn");
 const timerEl = getElement(".timer");
 const timeUpMessage = getElement(".time-up");
+const errorMessage = getElement(".error-message");
 const pressS = getElement("#s");
 const pressL = getElement("#l");
 const confettiEl = getElement("#confetti");
@@ -18,6 +19,9 @@ let countPressS = 0;
 startBtn.addEventListener("click", () => {
   if (document.getElementById("time").value === "") {
     document.removeEventListener("keydown", logKey);
+    errorMessage.classList.remove("hidden");
+    errorMessage.textContent =
+      "Please set the time to be able to start the game!";
     return;
   }
 
