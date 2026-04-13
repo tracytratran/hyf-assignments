@@ -81,8 +81,8 @@ async function fetchExchangeRates() {
 
     const data = await response.json();
 
-    renderCurrencySelector(currencySelectorFrom, data.rates);
-    renderCurrencySelector(currencySelectorTo, data.rates);
+    renderCurrencySelector(currencySelectorFrom, data.rates, "EUR");
+    renderCurrencySelector(currencySelectorTo, data.rates, "DKK");
 
     return data.rates;
   } catch (error) {
@@ -92,22 +92,14 @@ async function fetchExchangeRates() {
   }
 }
 
-function renderCurrencySelector(parentEl, obj) {
+function renderCurrencySelector(parentEl, obj, defaultValue) {
   for (const key of Object.keys(obj)) {
     const currencyOption = document.createElement("option");
     currencyOption.value = key;
     currencyOption.textContent = key;
 
-    if (parentEl === currencySelectorFrom) {
-      if (key === "EUR") {
-        currencyOption.selected = "selected";
-      }
-    }
-
-    if (parentEl === currencySelectorTo) {
-      if (key === "DKK") {
-        currencyOption.selected = "selected";
-      }
+    if (key === defaultValue) {
+      currencyOption.selected = "selected";
     }
 
     parentEl.appendChild(currencyOption);
