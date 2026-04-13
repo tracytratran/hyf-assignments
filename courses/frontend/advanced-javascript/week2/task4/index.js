@@ -17,11 +17,24 @@ let countPressL = 0;
 let countPressS = 0;
 
 startBtn.addEventListener("click", () => {
-  if (document.getElementById("time").value === "") {
-    document.removeEventListener("keydown", logKey);
-    errorMessage.classList.remove("hidden");
-    errorMessage.textContent =
-      "Please set the time to be able to start the game!";
+  const timerValue = getTimerValue();
+  const inputTimer = Number(timerValue);
+
+  if (timerValue === "") {
+    showErrorMessage("You shouldn't leave the input empty!");
+    console.error("Empty input!");
+    return;
+  }
+
+  if (isNaN(inputTimer)) {
+    showErrorMessage("You should input a number in this field!");
+    console.error("Input is not a number!");
+    return;
+  }
+
+  if (inputTimer <= 0) {
+    showErrorMessage("Please input a valid number that is greater than 0!");
+    console.error("Input is negative!");
     return;
   }
 
@@ -42,7 +55,7 @@ function restartGame() {
 function startTimer() {
   if (intervalID) return;
 
-  timer = getTimerValue();
+  timer = Number(getTimerValue());
   renderElTextContent(timerEl, timer);
 
   intervalID = setInterval(function () {
@@ -65,7 +78,7 @@ function endGame() {
 }
 
 function getTimerValue() {
-  return Number(document.getElementById("time").value);
+  return document.getElementById("time").value;
 }
 
 function logKey(e) {
@@ -91,6 +104,11 @@ function getWinner(countPressL, countPressS) {
 // UI rendering
 function renderElTextContent(el, content) {
   el.textContent = content;
+}
+
+function showErrorMessage(content) {
+  errorMessage.classList.remove("hidden");
+  renderElTextContent(errorMessage, content);
 }
 
 function showResult(winner) {
