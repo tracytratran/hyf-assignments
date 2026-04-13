@@ -82,12 +82,13 @@ function getTimerValue() {
 }
 
 function logKey(e) {
-  if (e.key === "l") {
+  const key = e.key.toLowerCase();
+  if (key === "l") {
     countPressL += 1;
     renderElTextContent(pressL, countPressL);
   }
 
-  if (e.key === "s") {
+  if (key === "s") {
     countPressS += 1;
     renderElTextContent(pressS, countPressS);
   }
