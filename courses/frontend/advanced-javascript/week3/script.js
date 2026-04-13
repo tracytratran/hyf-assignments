@@ -12,44 +12,31 @@ let currencyFrom;
 let currencyTo;
 let currencyRateFrom;
 let currencyRateTo;
-let lastChanged = "from";
 
 init();
 
-inputFrom.addEventListener("input", () => {
-  if (!inputFrom.value) {
-    inputTo.value = "";
-    return;
-  }
+inputFrom.addEventListener("input", (event) =>
+  updateInputValue(event.target.value, inputTo, calcCurrencyTo),
+);
 
-  inputTo.value = calcCurrencyTo();
-
-  lastChanged = "from";
-});
-
-inputTo.addEventListener("input", () => {
-  if (!inputTo.value) {
-    inputFrom.value = "";
-    return;
-  }
-
-  inputFrom.value = calcCurrencyFrom();
-
-  lastChanged = "to";
-});
+inputTo.addEventListener("input", (event) =>
+  updateInputValue(event.target.value, inputFrom, calcCurrencyFrom),
+);
 
 currencySelectorFrom.addEventListener("change", () => {
   currencyFrom = currencySelectorFrom.value;
   currencyRateFrom = currencyRates[currencyFrom];
 
-  updateInputValue();
+  if (!inputFrom.value && !inputTo.value) return;
+  inputTo.value = calcCurrencyTo();
 });
 
 currencySelectorTo.addEventListener("change", () => {
   currencyTo = currencySelectorTo.value;
   currencyRateTo = currencyRates[currencyTo];
 
-  updateInputValue();
+  if (!inputFrom.value && !inputTo.value) return;
+  inputFrom.value = calcCurrencyFrom();
 });
 
 retryBtn.addEventListener("click", () => {
@@ -106,10 +93,6 @@ function renderCurrencySelector(parentEl, obj, defaultValue) {
   }
 }
 
-function renderCurrencyRate(obj, key) {
-  return obj[key];
-}
-
 function calcCurrencyTo() {
   return (Number(inputFrom.value) * currencyRateTo) / currencyRateFrom;
 }
@@ -118,14 +101,11 @@ function calcCurrencyFrom() {
   return (Number(inputTo.value) * currencyRateFrom) / currencyRateTo;
 }
 
-function updateInputValue() {
-  if (!inputFrom.value && !inputTo.value) return;
-
-  if (lastChanged === "from") {
-    inputTo.value = calcCurrencyTo();
+function updateInputValue(currentInputValue, inputToUpdate, calcFunction) {
+  if (!currentInputValue) {
+    inputToUpdate.value = "";
+    return;
   }
 
-  if (lastChanged === "to") {
-    inputFrom.value = calcCurrencyFrom();
-  }
+  inputToUpdate.value = calcFunction();
 }
