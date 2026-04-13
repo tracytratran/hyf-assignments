@@ -1,11 +1,11 @@
 "use strict";
 
-const inputFrom = getElementById("amount-from");
-const inputTo = getElementById("amount-to");
-const currencySelectorFrom = getElementById("currency-from");
-const currencySelectorTo = getElementById("currency-to");
-const errorMessage = getElement(".error-message");
-const retryBtn = getElement(".retry-button");
+const inputFrom = document.getElementById("amount-from");
+const inputTo = document.getElementById("amount-to");
+const currencySelectorFrom = document.getElementById("currency-from");
+const currencySelectorTo = document.getElementById("currency-to");
+const errorMessage = document.querySelector(".error-message");
+const retryBtn = document.querySelector(".retry-button");
 
 let currencyRates;
 let currencyFrom;
@@ -58,18 +58,6 @@ retryBtn.addEventListener("click", () => {
   init();
 });
 
-function createEl(el) {
-  return document.createElement(el);
-}
-
-function getElement(el) {
-  return document.querySelector(el);
-}
-
-function getElementById(id) {
-  return document.getElementById(id);
-}
-
 async function init() {
   currencySelectorFrom.innerHTML = "";
   currencySelectorTo.innerHTML = "";
@@ -100,8 +88,8 @@ async function fetchExchangeRates() {
 }
 
 function renderCurrencySelector(parentEl, obj) {
-  for (const [key, value] of Object.entries(obj)) {
-    const currencyOption = createEl("option");
+  for (const key of Object.keys(obj)) {
+    const currencyOption = document.createElement("option");
     currencyOption.value = key;
     currencyOption.textContent = key;
 
