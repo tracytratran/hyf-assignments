@@ -40,14 +40,14 @@ inputTo.addEventListener("input", () => {
 
 currencySelectorFrom.addEventListener("change", () => {
   currencyFrom = currencySelectorFrom.value;
-  currencyRateFrom = renderCurrencyRate(currencyRates, currencyFrom);
+  currencyRateFrom = currencyRates[currencyFrom];
 
   updateInputValue();
 });
 
 currencySelectorTo.addEventListener("change", () => {
   currencyTo = currencySelectorTo.value;
-  currencyRateTo = renderCurrencyRate(currencyRates, currencyTo);
+  currencyRateTo = currencyRates[currencyTo];
 
   updateInputValue();
 });
@@ -67,8 +67,8 @@ async function init() {
 
   currencyRates = await fetchExchangeRates();
 
-  currencyRateFrom = renderCurrencyRate(currencyRates, currencyFrom);
-  currencyRateTo = renderCurrencyRate(currencyRates, currencyTo);
+  currencyRateFrom = currencyRates[currencyFrom];
+  currencyRateTo = currencyRates[currencyTo];
 }
 
 async function fetchExchangeRates() {
