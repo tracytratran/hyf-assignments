@@ -1,13 +1,23 @@
 "use strict";
 
 import ApiService from "./api-service.js";
+import { ValidationError, AppError } from "./error-system.js";
 
 export default class Screenshot {
-  constructor(inputUrl, screenshotUrl) {
+  constructor(inputUrl, screenshotUrl, onError) {
+    if (!inputUrl || !screenshotUrl) {
+      throw new ValidationError("Input URL and screenshot URL are required!");
+    }
+
     this.inputUrl = inputUrl;
     this.screenshotUrl = screenshotUrl;
+    this.onError = onError;
     this.apiService = new ApiService();
-    this.screenshotContainer = document.getElementById("screenshot-container");
+    this.screenshotContainer = document.querySelector(".screenshot-container");
+
+    if (!this.screenshotContainer) {
+      throw new AppError("Screenshot container element not found!");
+    }
   }
 
   render() {
@@ -26,15 +36,26 @@ export default class Screenshot {
     deleteButton.classList.add("delete-btn");
     this.screenshotContainer.appendChild(deleteButton);
     deleteButton.addEventListener("click", () => this.delete());
+
+    this.screenshotContainer.appendChild(this.screenshotContainer);
   }
 
   save() {
-    return this.apiService.saveScreenshot(this.inputUrl, this.screenshotUrl);
+    try {
+      return this.apiService.saveScreenshot(this.inputUrl, this.screenshotUrl);
+    } catch (error) {
+      console.error("Save error:", error);
+      this.onError?.(error);
+    }
   }
 
   delete() {
-    this.screenshotContainer.remove();
-
-    return this.apiService.deleteScreenshot(this.screenshotUrl);
+    try {
+      this.apiService.deleteScreenshot(this.screenshotUrl);
+      this.screenshotContainer.remove();
+    } catch (error) {
+      console.error("Delete error:", error);
+      this.onError?.(error);
+    }
   }
 }
