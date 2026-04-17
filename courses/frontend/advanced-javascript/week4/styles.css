@@ -2,6 +2,20 @@
   font-family: "DM Sans", sans-serif;
 }
 
-h1 {
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
   text-align: center;
+}
+
+img {
+  width: 60vw;
+}
+
+.hidden {
+  display: none;
 }
