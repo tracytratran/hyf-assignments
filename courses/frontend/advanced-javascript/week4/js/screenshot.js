@@ -24,24 +24,33 @@ export default class Screenshot {
 
   render() {
     this.screenshotWrapper = document.createElement("div");
-    this.screenshotWrapper.classList.add("screenshot-item");
+    this.screenshotWrapper.classList.add("screenshot-item", "flex-column");
+
+    const urlLabel = document.createElement("p");
+    urlLabel.textContent = this.inputUrl;
+    urlLabel.classList.add("url-label");
+    this.screenshotWrapper.appendChild(urlLabel);
 
     const screenshot = document.createElement("img");
     screenshot.src = this.screenshotUrl;
     this.screenshotWrapper.appendChild(screenshot);
 
+    const actions = document.createElement("div");
+    actions.classList.add("actions");
+    this.screenshotWrapper.appendChild(actions);
+
     if (!this.isSaved) {
       const saveButton = document.createElement("button");
       saveButton.textContent = "Save this screenshot";
       saveButton.classList.add("save-btn");
-      this.screenshotWrapper.appendChild(saveButton);
+      actions.appendChild(saveButton);
       saveButton.addEventListener("click", () => this.save());
     }
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete this screenshot";
     deleteButton.classList.add("delete-btn");
-    this.screenshotWrapper.appendChild(deleteButton);
+    actions.appendChild(deleteButton);
     deleteButton.addEventListener("click", () => this.delete());
 
     this.screenshotContainer.appendChild(this.screenshotWrapper);
