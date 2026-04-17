@@ -1,4 +1,10 @@
-import { RAPIDAPI_KEY, RAPIDAPI_HOST } from "./secret.js";
+import { RAPIDAPI_KEY } from "./secret.js";
+import {
+  AppError,
+  ApiError,
+  NetworkError,
+  ValidationError,
+} from "./error-system.js";
 
 export default class ApiService {
   async fetchScreenshot(url) {
@@ -8,55 +14,86 @@ export default class ApiService {
       method: "GET",
       headers: {
         "x-rapidapi-key": RAPIDAPI_KEY,
-        "x-rapidapi-host": RAPIDAPI_HOST,
+        "x-rapidapi-host": "website-screenshot6.p.rapidapi.com",
         "Content-Type": "application/json",
       },
     };
 
     try {
       const response = await fetch(endpoint, options);
+
+      if (!response.ok) {
+        throw new ApiError(
+          `API error: ${response.statusText}`,
+          response.status,
+        );
+      }
+
       const result = await response.json();
+
+      if (!result.screenshotUrl) {
+        throw new ApiError("No screenshot URL in response", 500);
+      }
+
       return result.screenshotUrl;
     } catch (error) {
-      console.error(error);
+      if (error instanceof ApiError) throw error;
+      if (error instanceof TypeError) {
+        throw new NetworkError("Network error: Failed to fetch screenshot");
+      }
+      throw new ApiError(error.message, 500);
     }
   }
 
   // Use localStorage because CrudCrud throws cors error
   saveScreenshot(inputUrl, screenshotUrl) {
-    if (!inputUrl || !screenshotUrl) return;
+    if (!inputUrl || !screenshotUrl) {
+      throw new ValidationError("URL and screenshot are required!");
+    }
 
-    const screenshots = JSON.parse(localStorage.getItem("screenshots"));
+    try {
+      const screenshotsJson = localStorage.getItem("screenshots");
+      const screenshots = screenshotsJson ? JSON.parse(screenshotsJson) : [];
 
-    if (!screenshots || screenshots.length === 0) {
-      localStorage.setItem(
-        "screenshots",
-        JSON.stringify([{ inputUrl, screenshotUrl }]),
-      );
-    } else {
       const doesScreenshotExist = screenshots.some(
         (screenshot) => screenshot.screenshotUrl === screenshotUrl,
       );
+
       if (doesScreenshotExist) {
         return;
       }
+
       const newScreenshots = [...screenshots, { inputUrl, screenshotUrl }];
       localStorage.setItem("screenshots", JSON.stringify(newScreenshots));
+    } catch (error) {
+      if (error instanceof ValidationError) throw error;
+      throw new AppError("Failed to save screenshot. Storage may be full.");
     }
   }
 
   deleteScreenshot(url) {
-    const screenshots = JSON.parse(localStorage.getItem("screenshots"));
+    try {
+      const screenshotsJson = localStorage.getItem("screenshots");
+      const screenshots = screenshotsJson ? JSON.parse(screenshotsJson) : [];
 
-    localStorage.setItem(
-      "screenshots",
-      JSON.stringify(
-        screenshots.filter((screenshot) => screenshot.screenshotUrl !== url),
-      ),
-    );
+      localStorage.setItem(
+        "screenshots",
+        JSON.stringify(
+          screenshots.filter((screenshot) => screenshot.screenshotUrl !== url),
+        ),
+      );
+    } catch (error) {
+      throw new AppError("Failed to delete screenshot");
+    }
   }
 
   listAllScreenshots() {
-    return JSON.parse(localStorage.getItem("screenshots"));
+    try {
+      const screenshotsJson = localStorage.getItem("screenshots");
+      return screenshotsJson ? JSON.parse(screenshotsJson) : [];
+    } catch (error) {
+      console.error("Error retrieving screenshots:", error);
+      return [];
+    }
   }
 }
