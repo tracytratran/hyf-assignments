@@ -10,8 +10,6 @@ const retryBtn = document.querySelector(".retry-button");
 let currencyRates;
 let currencyFrom;
 let currencyTo;
-let currencyRateFrom;
-let currencyRateTo;
 
 init();
 
@@ -23,20 +21,16 @@ inputTo.addEventListener("input", ({ target }) =>
   onAmountChanged(target, inputFrom, currencySelectorFrom, currencySelectorTo),
 );
 
-currencySelectorFrom.addEventListener("change", () => {
-  currencyFrom = currencySelectorFrom.value;
-  currencyRateFrom = currencyRates[currencyFrom];
+currencySelectorFrom.addEventListener("change", ({ target }) => {
+  currencyFrom = target.value;
 
-  if (!inputFrom.value && !inputTo.value) return;
-  inputTo.value = calcCurrencyTo();
+  onSelectorChanged(target, currencySelectorTo, inputFrom, inputTo);
 });
 
-currencySelectorTo.addEventListener("change", () => {
-  currencyTo = currencySelectorTo.value;
-  currencyRateTo = currencyRates[currencyTo];
+currencySelectorTo.addEventListener("change", ({ target }) => {
+  currencyTo = target.value;
 
-  if (!inputFrom.value && !inputTo.value) return;
-  inputFrom.value = calcCurrencyFrom();
+  onSelectorChanged(target, currencySelectorFrom, inputTo, inputFrom);
 });
 
 retryBtn.addEventListener("click", () => {
@@ -53,9 +47,6 @@ async function init() {
   currencyTo = "DKK";
 
   currencyRates = await fetchExchangeRates();
-
-  currencyRateFrom = currencyRates[currencyFrom];
-  currencyRateTo = currencyRates[currencyTo];
 }
 
 async function fetchExchangeRates() {
@@ -93,14 +84,6 @@ function renderCurrencySelector(parentEl, rates, defaultValue) {
   }
 }
 
-function calcCurrencyTo() {
-  return (Number(inputFrom.value) * currencyRateTo) / currencyRateFrom;
-}
-
-function calcCurrencyFrom() {
-  return (Number(inputTo.value) * currencyRateFrom) / currencyRateTo;
-}
-
 function onAmountChanged(
   changedInput,
   inputToUpdate,
@@ -115,4 +98,16 @@ function onAmountChanged(
   inputToUpdate.value =
     (Number(changedInput.value) * currencyRates[selectorToUpdate.value]) /
     currencyRates[selectorChanged.value];
+}
+
+function onSelectorChanged(
+  changedSelector,
+  selectorToUpdate,
+  baseInput,
+  inputToUpdate,
+) {
+  if (!baseInput.value && !inputToUpdate.value) return;
+  inputToUpdate.value =
+    (Number(baseInput.value) * currencyRates[selectorToUpdate.value]) /
+    currencyRates[changedSelector.value];
 }
