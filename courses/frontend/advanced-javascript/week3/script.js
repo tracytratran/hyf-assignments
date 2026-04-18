@@ -79,8 +79,8 @@ async function fetchExchangeRates() {
   }
 }
 
-function renderCurrencySelector(parentEl, obj, defaultValue) {
-  for (const key of Object.keys(obj)) {
+function renderCurrencySelector(parentEl, rates, defaultValue) {
+  for (const key of Object.keys(rates)) {
     const currencyOption = document.createElement("option");
     currencyOption.value = key;
     currencyOption.textContent = key;
