@@ -15,12 +15,12 @@ let currencyRateTo;
 
 init();
 
-inputFrom.addEventListener("input", ({ target }) =>
-  onAmountChanged(target, inputTo, currencySelectorTo, currencySelectorFrom),
+inputFrom.addEventListener("input", (event) =>
+  updateInputValue(event.target.value, inputTo, calcCurrencyTo),
 );
 
-inputTo.addEventListener("input", ({ target }) =>
-  onAmountChanged(target, inputFrom, currencySelectorFrom, currencySelectorTo),
+inputTo.addEventListener("input", (event) =>
+  updateInputValue(event.target.value, inputFrom, calcCurrencyFrom),
 );
 
 currencySelectorFrom.addEventListener("change", () => {
@@ -101,18 +101,11 @@ function calcCurrencyFrom() {
   return (Number(inputTo.value) * currencyRateFrom) / currencyRateTo;
 }
 
-function onAmountChanged(
-  changedInput,
-  inputToUpdate,
-  selectorToUpdate,
-  selectorChanged,
-) {
-  if (!changedInput.value) {
+function updateInputValue(currentInputValue, inputToUpdate, calcFunction) {
+  if (!currentInputValue) {
     inputToUpdate.value = "";
     return;
   }
 
-  inputToUpdate.value =
-    (Number(changedInput.value) * currencyRates[selectorToUpdate.value]) /
-    currencyRates[selectorChanged.value];
+  inputToUpdate.value = calcFunction();
 }
