@@ -8,7 +8,7 @@ import {
 
 export default class ApiService {
   async fetchScreenshot(url) {
-    const endpoint = `https://website-screenshot6.p.rapidapi.com/screenshot?url=${encodeURI(url)}`;
+    const endpoint = `https://website-screenshot6.p.rapidapi.com/screenshot?url=${encodeURIComponent(url)}`;
 
     const options = {
       method: "GET",
