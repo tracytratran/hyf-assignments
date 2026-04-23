@@ -15,7 +15,6 @@ export default class ApiService {
       headers: {
         "x-rapidapi-key": RAPIDAPI_KEY,
         "x-rapidapi-host": "website-screenshot6.p.rapidapi.com",
-        "Content-Type": "application/json",
       },
     };
 
