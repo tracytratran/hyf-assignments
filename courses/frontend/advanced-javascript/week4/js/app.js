@@ -26,9 +26,8 @@ export default class App {
   }
 
   init() {
-    this.generateButton.addEventListener(
-      "click",
-      async () => await this.handleGenerateClick(),
+    this.generateButton.addEventListener("click", () =>
+      this.handleGenerateClick(),
     );
     this.listAllButton.addEventListener("click", () =>
       this.handleListAllClick(),
