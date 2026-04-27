@@ -1,0 +1,12 @@
+.navbarLinks a {
+  color: white;
+  text-decoration: none;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.navbarLinks:hover,
+.isLinkActive {
+  border-block-end: var(--spacing-04) solid var(--border-color);
+  margin-block-end: -4px;
+}
