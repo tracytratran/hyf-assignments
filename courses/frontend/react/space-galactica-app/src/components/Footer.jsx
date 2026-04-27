@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -8,20 +9,33 @@ export const Footer = () => {
     <footer className={pathname !== "/" ? styles.footer : styles.hidden}>
       <div className={styles.footerDescription}>
         <h3>Galactica</h3>
-        <p>Explore the universe and beyond. Your journey to the stars starts here.</p>
+        <p>
+          Explore the universe and beyond. Your journey to the stars starts
+          here.
+        </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
       {/* 🧑🏽‍🚀 Task - Week 2 */}
       {/* Create a new list for the Pages. */}
       {/* We need to use the <Link /> component here. */}
-      {/* <div className={styles.pages}>
-        <h3>Pages</h3>
-        <ul>
-          <li> <Link/> </li>
-          ...
-        </ul>
-      </div> */}
       {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
+      <div className={styles.footerLinks}>
+        <h3>Pages</h3>
+        <ul className={styles.footerList}>
+          <li>
+            <Link to="/">Homepage</Link>
+          </li>
+          <li>
+            <Link to="/about_us">About Us</Link>
+          </li>
+          <li>
+            <Link to="/destination">Destination</Link>
+          </li>
+          <li>
+            <Link to="/nasa_collaboration">NASA Collaboration</Link>
+          </li>
+        </ul>
+      </div>
 
       {/* 🧑🏽‍🚀 Task - Week 1 */}
       {/* Add a new list item for LINKEDIN */}
@@ -48,4 +62,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-}
+};
