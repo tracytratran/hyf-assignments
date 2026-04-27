@@ -26,6 +26,9 @@ export const Destinations = () => {
   const removePlanetFromWishlist = (name) => {
     // 🧑🏽‍🚀 Task - Week 2
     // Remove the planet from the planets wishlist state.
+    setPlanetsWishlist(
+      planetsWishlist.filter((planet) => planet.name !== name),
+    );
   };
 
   return (
