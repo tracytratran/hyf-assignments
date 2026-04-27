@@ -20,7 +20,9 @@ export const Destinations = () => {
   const addPlanetToWishlist = (name, thumbnail) => {
     // 🧑🏽‍🚀 Task - Week 2
     // Add the planet to the planets wishlist state.
+    setPlanetsWishlist([...planetsWishlist, { name, thumbnail }]);
   };
+
   const removePlanetFromWishlist = (name) => {
     // 🧑🏽‍🚀 Task - Week 2
     // Remove the planet from the planets wishlist state.
