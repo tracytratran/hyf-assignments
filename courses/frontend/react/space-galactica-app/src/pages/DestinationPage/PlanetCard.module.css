@@ -1,0 +1,30 @@
+.planetCard {
+  border: 1px solid var(--border-color);
+  max-width: 70%;
+  margin: var(--spacing-20) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-08);
+  gap: var(--spacing-08);
+}
+
+.planetCard:nth-child(odd) {
+  margin-inline-start: auto;
+}
+
+.planetCard > *:last-child {
+  margin-inline-start: auto;
+}
+
+.planetDescription {
+  padding-block-start: var(--spacing-04);
+  margin-block-end: auto;
+}
+
+.planetThumbnail {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 var(--spacing-16);
+}
