@@ -8,6 +8,7 @@ export const Destinations = () => {
     // 🧑🏽‍🚀 Task - Week 2
     // This should be a simple function to check if a given planet is selected.
     // You will need to work with the array of planets wishlist.
+    return planetsWishlist.includes(planetName);
   };
 
   const togglePlanetSelection = (name, thumbnail) => {
