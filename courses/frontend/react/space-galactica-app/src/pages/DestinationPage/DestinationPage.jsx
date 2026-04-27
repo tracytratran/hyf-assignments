@@ -1,18 +1,6 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 
-// 🧑🏽‍🚀 Task - Week 2
-// Move this to its own file in this folder.
-const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
-  return (
-    <div className={styles.wishlistItem}>
-      <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
-      <b>{name.toUpperCase()}</b>
-      <button onClick={onRemove}>remove</button>
-    </div>
-  );
-};
-
 export const Destinations = () => {
   const [planetsWishlist, setPlanetsWishlist] = useState([]);
 
@@ -24,7 +12,7 @@ export const Destinations = () => {
 
   const togglePlanetSelection = (name, thumbnail) => {
     // 🧑🏽‍🚀 Task - Week 2
-    // When a planet is selected or deselected (toggled), the state of the wishlist planets should be updated accordingly by 
+    // When a planet is selected or deselected (toggled), the state of the wishlist planets should be updated accordingly by
     // calling the addPlanetToWishlist or removePlanetFromWishlist function. You will need a condition here.
   };
 
@@ -79,7 +67,8 @@ export const Destinations = () => {
             </div>
             <button
               className="roundButton"
-              onClick={() => togglePlanetSelection("Europa")}>
+              onClick={() => togglePlanetSelection("Europa")}
+            >
               {isPlanetInWishlist("Europa")
                 ? "REMOVE FROM WISHLIST"
                 : "ADD TO WISHLIST"}
@@ -97,7 +86,8 @@ export const Destinations = () => {
             </div>
             <button
               className="roundButton"
-              onClick={() => togglePlanetSelection("Mars")}>
+              onClick={() => togglePlanetSelection("Mars")}
+            >
               {isPlanetInWishlist("Mars")
                 ? "REMOVE FROM WISHLIST"
                 : "ADD TO WISHLIST"}
@@ -110,7 +100,6 @@ export const Destinations = () => {
 };
 
 export default Destinations;
-
 
 // 🧑🏽‍🚀 Task - Week 4 - part 2
 // Hate to break it to you, but you will have to make some changes to the code you already wrote.
