@@ -8,7 +8,9 @@ body {
   padding: 1.5rem;
 }
 
-button {
+.display-after-delay-btn,
+.location-btn,
+.run-after-delay-btn {
   padding: 0.6rem 1rem;
   background: #fff;
   border: 1px solid #cbd5e1;
