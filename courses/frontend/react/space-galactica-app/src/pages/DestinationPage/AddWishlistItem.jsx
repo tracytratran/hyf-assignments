@@ -26,7 +26,11 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
         onChange={(e) => setCustomWishListItem(e.currentTarget.value)}
       />
       <label htmlFor="customWishlistThumbnail">Wishlist item thumbnail</label>
-      <select id="customWishlistThumbnail">
+      <select
+        id="customWishlistThumbnail"
+        value={thumbnail}
+        onChange={(e) => setThumbnail(e.currentTarget.value)}
+      >
         <option value="/destination/image-europa.png">EUROPA</option>
         <option value="/destination/image-mars.png">MARS</option>
         <option value="/destination/image-moon.png">MOON</option>
