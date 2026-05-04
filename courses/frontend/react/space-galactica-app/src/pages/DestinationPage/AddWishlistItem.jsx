@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 
 export const AddWishlistItem = ({ onAddWishlistItem }) => {
@@ -13,7 +13,7 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
     // The required functionaity here:
     // - call the onAddWishlistItem function;
     // - clear the <input/> field .
-    onAddWishlistItem();
+    onAddWishlistItem(customWishListItem, thumbnail);
     setCustomWishListItem("");
   };
 

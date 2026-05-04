@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 import PlanetCard from "./PlanetCard";
+import { AddWishlistItem } from "./AddWishlistItem";
 
 const planets = [
   {
@@ -31,6 +32,10 @@ const planets = [
 
 export const Destinations = () => {
   const [planetsWishlist, setPlanetsWishlist] = useState([]);
+
+  const onAddWishlistItem = (name, thumbnail) => {
+    setPlanetsWishlist([...planetsWishlist, { name, thumbnail }]);
+  };
 
   const isPlanetInWishlist = (planetName) => {
     // 🧑🏽‍🚀 Task - Week 2
@@ -85,6 +90,7 @@ export const Destinations = () => {
 
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Use the AddWishlistItem component here. */}
+          <AddWishlistItem onAddWishlistItem={onAddWishlistItem} />
 
           {/* 🧑🏽‍🚀 Task - Week 3
           <h3>Your current wishlist</h3>
