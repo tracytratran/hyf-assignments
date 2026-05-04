@@ -13,6 +13,8 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
     // The required functionaity here:
     // - call the onAddWishlistItem function;
     // - clear the <input/> field .
+    onAddWishlistItem();
+    setCustomWishListItem("");
   };
 
   return (
