@@ -1,3 +1,5 @@
+import styles from "./DestinationPage.module.css";
+
 // 🧑🏽‍🚀 Task - Week 2
 // Move this to its own file in this folder.
 export const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
