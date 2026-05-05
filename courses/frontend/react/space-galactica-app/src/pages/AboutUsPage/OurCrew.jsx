@@ -1,5 +1,38 @@
 import styles from "./OurCrew.module.css";
 
+const crewMembers = [
+  {
+    img: "/public/crew/image-anousheh-ansari.png",
+    name: "Captain Sarah Vega",
+    description:
+      "A former NASA astronaut with over 15 years of experience, Captain Vega leads our missions with unparalleled expertise and a passion for space exploration.",
+  },
+  {
+    img: "/public/crew/image-anousheh-ansari.png",
+    name: "Dr. Leo Redding",
+    description:
+      "Our chief astrophysicist, Dr. Redding, is a renowned scientist who has contributed to major space discoveries. He ensures that every journey is as educational as it is exhilarating.",
+  },
+  {
+    img: "/public/crew/image-anousheh-ansari.png",
+    name: "Chief Engineer Hana Lee",
+    description:
+      "With her extensive background in aerospace engineering, Hana Lee is responsible for the state-of-the-art technology that powers our spacecraft. Her innovation ensures that our travelers are always in safe hands.",
+  },
+  {
+    img: "/public/crew/image-anousheh-ansari.png",
+    name: "Mission Specialist Alex Santos",
+    description:
+      "As a mission specialist, Alex's job is to ensure that every aspect of the journey runs smoothly. With a background in both science and adventure tourism, Alex is the perfect guide for our space travelers.",
+  },
+  {
+    img: "/public/crew/image-anousheh-ansari.png",
+    name: "Crew Member Maya Patel",
+    description:
+      "Maya brings a unique blend of technical skills and customer service experience to the team. She's always ready to assist with any needs and to make sure every traveler has an unforgettable experience.",
+  },
+];
+
 const OurCrew = () => {
   // 🧑🏽‍🚀 Task - Week 1
   // Create the "Our Crew section".
@@ -16,68 +49,13 @@ const OurCrew = () => {
       <br />
 
       <div className={styles.crewGrid}>
-        <section className={styles.crewCard}>
-          <img
-            src="/public/crew/image-anousheh-ansari.png"
-            alt="Captain Sarah Vega"
-          />
-          <h4>Captain Sarah Vega</h4>
-          <p>
-            A former NASA astronaut with over 15 years of experience, Captain
-            Vega leads our missions with unparalleled expertise and a passion
-            for space exploration.
-          </p>
-        </section>
-        <section className={styles.crewCard}>
-          <img
-            src="/public/crew/image-anousheh-ansari.png"
-            alt="Dr. Leo Redding"
-          />
-          <h4>Dr. Leo Redding</h4>
-          <p>
-            Our chief astrophysicist, Dr. Redding, is a renowned scientist who
-            has contributed to major space discoveries. He ensures that every
-            journey is as educational as it is exhilarating.
-          </p>
-        </section>
-        <section className={styles.crewCard}>
-          <img
-            src="/public/crew/image-anousheh-ansari.png"
-            alt="Chief Engineer Hana Lee"
-          />
-          <h4>Chief Engineer Hana Lee</h4>
-          <p>
-            With her extensive background in aerospace engineering, Hana Lee is
-            responsible for the state-of-the-art technology that powers our
-            spacecraft. Her innovation ensures that our travelers are always in
-            safe hands.
-          </p>
-        </section>
-        <section className={styles.crewCard}>
-          <img
-            src="/public/crew/image-anousheh-ansari.png"
-            alt="Mission Specialist Alex Santos"
-          />
-          <h4>Mission Specialist Alex Santos</h4>
-          <p>
-            As a mission specialist, Alex's job is to ensure that every aspect
-            of the journey runs smoothly. With a background in both science and
-            adventure tourism, Alex is the perfect guide for our space
-            travelers.
-          </p>
-        </section>
-        <section className={styles.crewCard}>
-          <img
-            src="/public/crew/image-anousheh-ansari.png"
-            alt="Crew Member Maya Patel"
-          />
-          <h4>Crew Member Maya Patel</h4>
-          <p>
-            Maya brings a unique blend of technical skills and customer service
-            experience to the team. She's always ready to assist with any needs
-            and to make sure every traveler has an unforgettable experience.
-          </p>
-        </section>
+        {crewMembers.map((member) => (
+          <section className={styles.crewCard}>
+            <img src={member.img} alt={member.name} />
+            <h4>{member.name}</h4>
+            <p>{member.description}</p>
+          </section>
+        ))}
       </div>
     </>
   );

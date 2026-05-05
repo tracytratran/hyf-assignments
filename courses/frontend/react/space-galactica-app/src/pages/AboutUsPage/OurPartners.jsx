@@ -1,5 +1,28 @@
 import styles from "./OurPartners.module.css";
 
+const businessPartners = [
+  {
+    imageSrc: "/public/business_partners/alphabet_logo.png",
+    alt: "Alphabet Logo",
+  },
+  { imageSrc: "/public/business_partners/amazon_logo.png", alt: "Amazon Logo" },
+  { imageSrc: "/public/business_partners/cbc_logo_white.png", alt: "CBC Logo" },
+  {
+    imageSrc: "/public/business_partners/microsoft_logo_white.png",
+    alt: "Microsoft Logo",
+  },
+  { imageSrc: "/public/business_partners/nyu_logo.png", alt: "NYU Logo" },
+  {
+    imageSrc: "/public/business_partners/queens_logo_white.png",
+    alt: "Queens Logo",
+  },
+  {
+    imageSrc: "/public/business_partners/samsung_logo.png",
+    alt: "Samsung Logo",
+  },
+  { imageSrc: "/public/business_partners/sodexo_logo.png", alt: "Sodexo Logo" },
+];
+
 const OurPartners = () => {
   // 🧑🏽‍🚀 Task - Week 1
   // Create the "Our Partners section".
@@ -14,35 +37,9 @@ const OurPartners = () => {
       </p>
       <br />
       <section className={styles.partnersGrid}>
-        <img
-          src="/public/business_partners/alphabet_logo.png"
-          alt="Alphabet Logo"
-        />
-        <img
-          src="/public/business_partners/amazon_logo.png"
-          alt="Amazon Logo"
-        />
-        <img
-          src="/public/business_partners/cbc_logo_white.png"
-          alt="CBC Logo"
-        />
-        <img
-          src="/public/business_partners/microsoft_logo_white.png"
-          alt="Microsoft Logo"
-        />
-        <img src="/public/business_partners/nyu_logo.png" alt="NYU Logo" />
-        <img
-          src="/public/business_partners/queens_logo_white.png"
-          alt="Queens Logo"
-        />
-        <img
-          src="/public/business_partners/samsung_logo.png"
-          alt="Samsung Logo"
-        />
-        <img
-          src="/public/business_partners/sodexo_logo.png"
-          alt="Sodexo Logo"
-        />
+        {businessPartners.map((partner) => (
+          <img src={partner.imageSrc} alt={partner.alt} />
+        ))}
       </section>
     </>
   );
