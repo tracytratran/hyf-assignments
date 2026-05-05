@@ -12,8 +12,21 @@
   text-align: justify;
 }
 
-.nasaImg {
+.nasaPicOfTheDay img {
   margin: 0.5rem auto;
   width: auto;
   height: 400px;
 }
+
+.photosWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 2rem;
+}
+
+/* .roverPhotos img {
+  width: 100%;
+  height: 300px;
+  border-radius: 1rem;
+  object-fit: cover;
+} */

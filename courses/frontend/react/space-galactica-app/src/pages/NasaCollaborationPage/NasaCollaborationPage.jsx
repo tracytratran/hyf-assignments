@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NasaCollaborationPage.module.css";
+import RoverPhoto from "../../components/RoverPhoto";
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
-// You need a proper API_KEY for the requests to work
 const API_KEY = "6V87kaVneIgHP8vr6xVebecrF2qGVQNo7SVck32F";
 
 const NASA_URLs = {
   astronomyPicOfTheDay: `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`,
+
   // marsRoverPhoto: `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${API_KEY}`,
+
+  // Alternative API as the Mars Rover API has been archived
   marsRoverPhoto:
-    "https://rovers.nebulum.one/api/v1/rovers/curiosity/photos?earth_date=2015-6-3", // alternative API as the Mars Rover API has been archived
+    "https://rovers.nebulum.one/api/v1/rovers/curiosity/photos?earth_date=2015-6-3",
 };
 
 export const NasaCollaboration = () => {
@@ -64,24 +67,16 @@ export const NasaCollaboration = () => {
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Iterate over the roverPhoto?.photos array and display all the pictures. */}
           {roverPhoto?.photos?.length ? (
-            roverPhoto.photos.map((photo) => (
-              <>
-                {/* 🧑🏽‍🚀 Task - Week 3 */}
-                {/* Create a react component for the <RoverPhoto />, which should accept the following props: */}
-                {/* 1. src: source of the img; */}
-                {/* 2. date: earth_date data coming from the API; */}
-                {/* 3. roverName: will be in the rover object. */}
-
-                {/* If you don't know how the data looks like you can log it out to the console and investigate in the browser's devtools. */}
-
-                <p>Date {photo.earth_date}</p>
-                <img
-                  className={styles.nasaImg}
+            <div className={styles.photosWrapper}>
+              {roverPhoto.photos.map((photo) => (
+                <RoverPhoto
+                  key={photo.id}
                   src={photo.img_src}
-                  alt={photo.rover.name}
+                  date={photo.earth_date}
+                  roverName={photo.rover.name}
                 />
-              </>
-            ))
+              ))}
+            </div>
           ) : (
             <p>Loading rover photos...</p>
           )}
