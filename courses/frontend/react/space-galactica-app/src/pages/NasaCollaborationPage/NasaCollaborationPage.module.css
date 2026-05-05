@@ -4,9 +4,21 @@
   height: 100vh;
 }
 
+.nasaPicOfTheDay h3 {
+  font-style: italic;
+}
 
-.nasaPicOfTheDayImg {
+.nasaPicOfTheDay p {
+  text-align: justify;
+}
+
+.nasaPicOfTheDay img {
+  margin-top: 0.5rem;
   width: auto;
   height: 400px;
-
 }
+
+/* .nasaPicOfTheDayImg {
+  width: auto;
+  height: 400px;
+} */
