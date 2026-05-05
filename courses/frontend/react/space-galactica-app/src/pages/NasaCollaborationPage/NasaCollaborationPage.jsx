@@ -7,7 +7,9 @@ const API_KEY = "6V87kaVneIgHP8vr6xVebecrF2qGVQNo7SVck32F";
 
 const NASA_URLs = {
   astronomyPicOfTheDay: `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`,
-  marsRoverPhoto: `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${API_KEY}`,
+  // marsRoverPhoto: `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${API_KEY}`,
+  marsRoverPhoto:
+    "https://rovers.nebulum.one/api/v1/rovers/curiosity/photos?earth_date=2015-6-3", // alternative API as the Mars Rover API has been archived
 };
 
 export const NasaCollaboration = () => {
@@ -51,11 +53,7 @@ export const NasaCollaboration = () => {
             <div className={styles.nasaPicOfTheDay}>
               <h3>{dailyImg.title}</h3>
               <p>{dailyImg.explanation}</p>
-              <img
-                src={dailyImg.url}
-                alt=""
-                className={styles.nasaPicOfTheDayImg}
-              />
+              <img src={dailyImg.url} alt="" className={styles.nasaImg} />
             </div>
           ) : (
             <p>Loading astronomy picture of the day...</p>
@@ -66,22 +64,24 @@ export const NasaCollaboration = () => {
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Iterate over the roverPhoto?.photos array and display all the pictures. */}
           {roverPhoto?.photos?.length ? (
-            <>
-              {/* 🧑🏽‍🚀 Task - Week 3 */}
-              {/* Create a react component for the <RoverPhoto />, which should accept the following props: */}
-              {/* 1. src: source of the img; */}
-              {/* 2. date: earth_date data coming from the API; */}
-              {/* 3. roverName: will be in the rover object. */}
+            roverPhoto.photos.map((photo) => (
+              <>
+                {/* 🧑🏽‍🚀 Task - Week 3 */}
+                {/* Create a react component for the <RoverPhoto />, which should accept the following props: */}
+                {/* 1. src: source of the img; */}
+                {/* 2. date: earth_date data coming from the API; */}
+                {/* 3. roverName: will be in the rover object. */}
 
-              {/* If you don't know how the data looks like you can log it out to the console and investigate in the browser's devtools. */}
+                {/* If you don't know how the data looks like you can log it out to the console and investigate in the browser's devtools. */}
 
-              <p>Date {roverPhoto.photos[0]?.earth_date}</p>
-              <img
-                className={styles.nasaPicOfTheDayImg}
-                src={roverPhoto.photos[0]?.img_src}
-                alt={dailyImg.title}
-              />
-            </>
+                <p>Date {photo.earth_date}</p>
+                <img
+                  className={styles.nasaImg}
+                  src={photo.img_src}
+                  alt={photo.rover.name}
+                />
+              </>
+            ))
           ) : (
             <p>Loading rover photos...</p>
           )}
