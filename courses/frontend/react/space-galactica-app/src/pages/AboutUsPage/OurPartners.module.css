@@ -1,0 +1,16 @@
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.partnersGrid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}

@@ -1,5 +1,28 @@
 import { useLocation } from "react-router-dom";
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
+
+const footerLinks = [
+  {
+    name: "Facebook",
+    link: "https://facebook.com",
+  },
+  {
+    name: "Instagram",
+    link: "https://instagram.com",
+  },
+  {
+    name: "Tiktok",
+    link: "https://tiktok.com",
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/",
+  },
+  {
+    name: "On the streets at night",
+    link: "https://google.com",
+  },
+];
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -8,7 +31,10 @@ export const Footer = () => {
     <footer className={pathname !== "/" ? styles.footer : styles.hidden}>
       <div className={styles.footerDescription}>
         <h3>Galactica</h3>
-        <p>Explore the universe and beyond. Your journey to the stars starts here.</p>
+        <p>
+          Explore the universe and beyond. Your journey to the stars starts
+          here.
+        </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
       {/* 🧑🏽‍🚀 Task - Week 2 */}
@@ -28,18 +54,11 @@ export const Footer = () => {
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          <li>
-            <a href="https://facebook.com">Facebook</a>
-          </li>
-          <li>
-            <a href="https://instagram.com">Instagram</a>
-          </li>
-          <li>
-            <a href="https://tiktok.com">Tiktok</a>
-          </li>
-          <li>
-            <a href="https://google.com">On the streets at night</a>
-          </li>
+          {footerLinks.map((footerLink) => (
+            <li key={footerLink.name}>
+              <a href={footerLink.link}>{footerLink.name}</a>
+            </li>
+          ))}
           {/* 🧑🏽‍🚀 Task - Week 2 */}
           {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
           {/* SocialMediaItem should accept the following props: url, title, icon. */}
@@ -48,4 +67,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-}
+};
