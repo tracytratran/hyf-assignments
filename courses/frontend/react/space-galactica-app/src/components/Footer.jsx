@@ -42,6 +42,10 @@ export const Footer = () => {
           Explore the universe and beyond. Your journey to the stars starts
           here.
         </p>
+        <p>
+          Explore the universe and beyond. Your journey to the stars starts
+          here.
+        </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
       {/* 🧑🏽‍🚀 Task - Week 2 */}
@@ -85,4 +89,5 @@ export const Footer = () => {
       </div>
     </footer>
   );
+};
 };
