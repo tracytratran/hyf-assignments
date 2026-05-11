@@ -72,16 +72,18 @@ export const Destinations = () => {
           {/* Display the number of wishlist planets, if there are any planets in the wishlist. */}
           {/* 🧑🏽‍🚀 Use a variable to display the number of wishlist planets:  */}
 
-          {planetsWishlist.length > 0 && (
+          {planetsWishlist.length > 0 ? (
             <p>
               You have {planetsWishlist.length} planet
               {planetsWishlist.length > 1 ? "s" : ""} in your wishlist.
             </p>
-          )}
-          {/* Display the "no planets" message if the wishlist is empty. */}
-          {planetsWishlist.length === 0 && (
+          ) : (
             <p>No planets in your wishlist :(</p>
           )}
+          {/* Display the "no planets" message if the wishlist is empty. */}
+          {/* {planetsWishlist.length === 0 && (
+            <p>No planets in your wishlist :(</p>
+          )} */}
 
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Use the AddWishlistItem component here. */}
