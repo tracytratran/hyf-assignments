@@ -48,6 +48,7 @@ export default class App {
       this.currentScreenshot = new Screenshot(
         inputUrl,
         screenshotUrl,
+        this.apiService,
         (error) => this.showError(error),
       );
       this.currentScreenshot.render();
@@ -70,6 +71,7 @@ export default class App {
         this.currentScreenshot = new Screenshot(
           item.inputUrl,
           item.screenshotUrl,
+          this.apiService,
           (error) => this.showError(error),
           true,
         );

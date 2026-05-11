@@ -4,7 +4,7 @@ import ApiService from "./api-service.js";
 import { ValidationError, AppError } from "./error-system.js";
 
 export default class Screenshot {
-  constructor(inputUrl, screenshotUrl, onError, isSaved = false) {
+  constructor(inputUrl, screenshotUrl, apiService, onError, isSaved = false) {
     if (!inputUrl || !screenshotUrl) {
       throw new ValidationError("Input URL and screenshot URL are required!");
     }
@@ -13,7 +13,7 @@ export default class Screenshot {
     this.screenshotUrl = screenshotUrl;
     this.onError = onError;
     this.isSaved = isSaved;
-    this.apiService = new ApiService();
+    this.apiService = apiService;
     this.screenshotContainer = document.querySelector(".screenshot-container");
     this.screenshotWrapper = null;
 
