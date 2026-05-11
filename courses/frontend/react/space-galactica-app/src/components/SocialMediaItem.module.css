@@ -1,0 +1,10 @@
+.mediaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mediaItem img {
+  width: 1.5rem;
+  height: 1.5rem;
+}

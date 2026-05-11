@@ -1,26 +1,33 @@
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
+import SocialMediaItem from "./SocialMediaItem";
 
-const footerLinks = [
+const socialMedia = [
   {
-    name: "Facebook",
-    link: "https://facebook.com",
+    url: "https://facebook.com",
+    title: "Facebook",
+    icon: "/public/socialmedia/facebook.png",
   },
   {
-    name: "Instagram",
-    link: "https://instagram.com",
+    url: "https://instagram.com",
+    title: "Instagram",
+    icon: "/public/socialmedia/instagram.png",
   },
   {
-    name: "Tiktok",
-    link: "https://tiktok.com",
+    url: "https://tiktok.com",
+    title: "Tiktok",
+    icon: "/public/socialmedia/tiktok.png",
   },
   {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/",
+    url: "https://linkedin.com",
+    title: "LinkedIn",
+    icon: "/public/socialmedia/linkedin.png",
   },
   {
-    name: "On the streets at night",
-    link: "https://google.com",
+    url: "https://google.com",
+    title: "On the streets at night",
+    icon: "/public/socialmedia/google.png",
   },
 ];
 
@@ -35,32 +42,41 @@ export const Footer = () => {
           Explore the universe and beyond. Your journey to the stars starts
           here.
         </p>
+        <p>
+          Explore the universe and beyond. Your journey to the stars starts
+          here.
+        </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
-      {/* 🧑🏽‍🚀 Task - Week 2 */}
-      {/* Create a new list for the Pages. */}
-      {/* We need to use the <Link /> component here. */}
-      {/* <div className={styles.pages}>
+
+      <div className={styles.footerLinks}>
         <h3>Pages</h3>
-        <ul>
-          <li> <Link/> </li>
-          ...
+        <ul className={styles.footerList}>
+          <li>
+            <Link to="/">Homepage</Link>
+          </li>
+          <li>
+            <Link to="/about_us">About Us</Link>
+          </li>
+          <li>
+            <Link to="/destination">Destination</Link>
+          </li>
+          <li>
+            <Link to="/nasa_collaboration">NASA Collaboration</Link>
+          </li>
         </ul>
-      </div> */}
-      {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
+      </div>
 
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          {footerLinks.map((footerLink) => (
-            <li key={footerLink.name}>
-              <a href={footerLink.link}>{footerLink.name}</a>
-            </li>
+          {socialMedia.map((item) => (
+            <SocialMediaItem
+              url={item.url}
+              title={item.title}
+              icon={item.icon}
+            />
           ))}
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
-          {/* SocialMediaItem should accept the following props: url, title, icon. */}
-          {/* For the icons, you can download 1-2 social media icons for testing and put it in the /public/socialmedia/ folder. */}
         </ul>
       </div>
     </footer>

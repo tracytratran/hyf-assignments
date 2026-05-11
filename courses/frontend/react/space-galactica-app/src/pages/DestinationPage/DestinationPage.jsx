@@ -1,40 +1,55 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
+import PlanetCard from "./PlanetCard";
 
-// 🧑🏽‍🚀 Task - Week 2
-// Move this to its own file in this folder.
-const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
-  return (
-    <div className={styles.wishlistItem}>
-      <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
-      <b>{name.toUpperCase()}</b>
-      <button onClick={onRemove}>remove</button>
-    </div>
-  );
-};
+const planets = [
+  {
+    name: "Europa",
+    description:
+      "Europa, one of Jupiter’s moons, is an icy world with a hidden ocean beneath its surface. This mysterious moon is a prime candidate for the search for extraterrestrial life, making it a thrilling destination for space explorers.",
+    thumbnail: "/destination/image-europa.png",
+  },
+  {
+    name: "Mars",
+    description:
+      "Mars, the Red Planet, is a barren yet fascinating world with vast deserts, towering volcanoes, and the deepest canyon in the solar system. As humanity’s next frontier, Mars invites us to dream of colonization and the possibilities of life beyond Earth.",
+    thumbnail: "/destination/image-mars.png",
+  },
+  {
+    name: "Moon",
+    description:
+      "Our closest celestial neighbor, the Moon, is a silent witness to Earth's history. With its stunning craters and desolate landscapes, the Moon offers a unique glimpse into space exploration's past and future, making it a perfect destination for lunar adventurers.",
+    thumbnail: "/destination/image-moon.png",
+  },
+  {
+    name: "Titan",
+    description:
+      "Titan, Saturn's largest moon, is a world of dense atmosphere and liquid methane lakes. This enigmatic moon is shrouded in a thick orange haze, concealing a landscape that is both alien and strangely familiar, beckoning explorers to uncover its secrets.",
+    thumbnail: "/destination/image-titan.png",
+  },
+];
 
 export const Destinations = () => {
   const [planetsWishlist, setPlanetsWishlist] = useState([]);
 
   const isPlanetInWishlist = (planetName) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // This should be a simple function to check if a given planet is selected.
-    // You will need to work with the array of planets wishlist.
+    return planetsWishlist.some((planet) => planet.name === planetName);
   };
 
   const togglePlanetSelection = (name, thumbnail) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // When a planet is selected or deselected (toggled), the state of the wishlist planets should be updated accordingly by 
-    // calling the addPlanetToWishlist or removePlanetFromWishlist function. You will need a condition here.
+    isPlanetInWishlist(name)
+      ? removePlanetFromWishlist(name)
+      : addPlanetToWishlist(name, thumbnail);
   };
 
   const addPlanetToWishlist = (name, thumbnail) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // Add the planet to the planets wishlist state.
+    setPlanetsWishlist([...planetsWishlist, { name, thumbnail }]);
   };
+
   const removePlanetFromWishlist = (name) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // Remove the planet from the planets wishlist state.
+    setPlanetsWishlist(
+      planetsWishlist.filter((planet) => planet.name !== name),
+    );
   };
 
   return (
@@ -43,12 +58,14 @@ export const Destinations = () => {
         <h1>Travel destinations</h1>
         <section className="card">
           <h2>Wishlist</h2>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Display the number of wishlist planets, if there are any planets in the wishlist. */}
-          {/* Display the "no planets" message if the wishlist is empty. */}
-          <p>No planets in your wishlist :(</p>
-          {/* 🧑🏽‍🚀 Use a variable to display the number of wishlist planets:  */}
-          <p>You have X planets in your wishlist</p>
+          {planetsWishlist.length > 0 ? (
+            <p>
+              You have {planetsWishlist.length} planet
+              {planetsWishlist.length > 1 ? "s" : ""} in your wishlist.
+            </p>
+          ) : (
+            <p>No planets in your wishlist :(</p>
+          )}
 
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Use the AddWishlistItem component here. */}
@@ -63,46 +80,17 @@ export const Destinations = () => {
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Add all 4 planets: Europa, Moon, Mars, Titan.  */}
-          {/* Use the README.md file for descriptions. */}
-          {/* Create a <PlanetCard /> component, which accepts the following props: name, description, thumbnail, isSelected, togglePlanetSelection */}
-          <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-europa.png"
-              alt=""
+          {planets.map((planet) => (
+            <PlanetCard
+              name={planet.name.toUpperCase()}
+              description={planet.description}
+              thumbnail={planet.thumbnail}
+              isSelected={isPlanetInWishlist(planet.name)}
+              togglePlanetSelection={() =>
+                togglePlanetSelection(planet.name, planet.thumbnail)
+              }
             />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetInWishlist("Europa") ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button
-              className="roundButton"
-              onClick={() => togglePlanetSelection("Europa")}>
-              {isPlanetInWishlist("Europa")
-                ? "REMOVE FROM WISHLIST"
-                : "ADD TO WISHLIST"}
-            </button>
-          </div>
-          <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-mars.png"
-              alt=""
-            />
-            <div className={styles.planetDescription}>
-              <h2>MARS {isPlanetInWishlist("Mars") ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button
-              className="roundButton"
-              onClick={() => togglePlanetSelection("Mars")}>
-              {isPlanetInWishlist("Mars")
-                ? "REMOVE FROM WISHLIST"
-                : "ADD TO WISHLIST"}
-            </button>
-          </div>
+          ))}
         </section>
       </main>
     </div>
@@ -110,7 +98,6 @@ export const Destinations = () => {
 };
 
 export default Destinations;
-
 
 // 🧑🏽‍🚀 Task - Week 4 - part 2
 // Hate to break it to you, but you will have to make some changes to the code you already wrote.
