@@ -1,8 +1,9 @@
 "use strict";
 
-import Screenshot from "./screenshot.js";
 import ApiService from "./api-service.js";
 import { AppError, ValidationError } from "./error-system.js";
+import Screenshot from "./screenshot.js";
+import { isValidUrl } from "./utils.js";
 
 export default class App {
   constructor() {
@@ -38,7 +39,7 @@ export default class App {
     try {
       this.clearError();
       const inputUrl = this.input.value.trim();
-      if (!inputUrl) {
+      if (!inputUrl || !isValidUrl(inputUrl)) {
         throw new ValidationError("Please enter a valid URL!");
       }
 
