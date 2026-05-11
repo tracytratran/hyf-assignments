@@ -42,7 +42,6 @@ export class ApiError extends AppError {
       return "Server error. Try again later!";
     }
 
-    console.error(this.statusCode);
     return "Something went wrong. Please try again!";
   }
 }
