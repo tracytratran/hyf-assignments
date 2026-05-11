@@ -102,42 +102,17 @@ export const Destinations = () => {
           {/* Add all 4 planets: Europa, Moon, Mars, Titan.  */}
           {/* Use the README.md file for descriptions. */}
           {/* Create a <PlanetCard /> component, which accepts the following props: name, description, thumbnail, isSelected, togglePlanetSelection */}
-          <PlanetCard
-            name={planets[0].name.toUpperCase()}
-            description={planets[0].description}
-            thumbnail={planets[0].thumbnail}
-            isSelected={isPlanetInWishlist(planets[0].name)}
-            togglePlanetSelection={() =>
-              togglePlanetSelection(planets[0].name, planets[0].thumbnail)
-            }
-          />
-          <PlanetCard
-            name={planets[1].name.toUpperCase()}
-            description={planets[1].description}
-            thumbnail={planets[1].thumbnail}
-            isSelected={isPlanetInWishlist(planets[1].name)}
-            togglePlanetSelection={() =>
-              togglePlanetSelection(planets[1].name, planets[1].thumbnail)
-            }
-          />
-          <PlanetCard
-            name={planets[2].name.toUpperCase()}
-            description={planets[2].description}
-            thumbnail={planets[2].thumbnail}
-            isSelected={isPlanetInWishlist(planets[2].name)}
-            togglePlanetSelection={() =>
-              togglePlanetSelection(planets[2].name, planets[2].thumbnail)
-            }
-          />
-          <PlanetCard
-            name={planets[3].name.toUpperCase()}
-            description={planets[3].description}
-            thumbnail={planets[3].thumbnail}
-            isSelected={isPlanetInWishlist(planets[3].name)}
-            togglePlanetSelection={() =>
-              togglePlanetSelection(planets[3].name, planets[3].thumbnail)
-            }
-          />
+          {planets.map((planet) => (
+            <PlanetCard
+              name={planet.name.toUpperCase()}
+              description={planet.description}
+              thumbnail={planet.thumbnail}
+              isSelected={isPlanetInWishlist(planet.name)}
+              togglePlanetSelection={() =>
+                togglePlanetSelection(planet.name, planet.thumbnail)
+              }
+            />
+          ))}
         </section>
       </main>
     </div>
