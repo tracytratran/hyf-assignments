@@ -34,8 +34,6 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Create a <NavItem> component, which accepts the following props: title, link, isActive.  */}
           <NavItem
             title={navbarItems[0].title}
             link={navbarItems[0].link}

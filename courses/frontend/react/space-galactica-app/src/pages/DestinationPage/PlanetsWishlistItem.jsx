@@ -1,5 +1,3 @@
-// 🧑🏽‍🚀 Task - Week 2
-// Move this to its own file in this folder.
 export const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
   return (
     <div className={styles.wishlistItem}>
