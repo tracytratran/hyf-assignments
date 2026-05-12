@@ -1,7 +1,7 @@
-.app {
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
+.nasaPicOfTheDay {
+  margin: 0.5rem auto;
+  width: 100%;
+  height: auto;
 }
 
 .nasaPicOfTheDay h3 {
@@ -13,20 +13,16 @@
 }
 
 .nasaPicOfTheDay img {
-  margin: 0.5rem auto;
-  width: auto;
-  height: 400px;
+  display: block;
+  width: 100%;
+  height: 60vh;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  object-position: center;
 }
 
-.photosWrapper {
+.roverPhotosWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 2rem;
 }
-
-/* .roverPhotos img {
-  width: 100%;
-  height: 300px;
-  border-radius: 1rem;
-  object-fit: cover;
-} */
