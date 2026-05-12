@@ -51,5 +51,5 @@ export function WishlistProvider({ children }) {
 }
 
 export function useWishList() {
-  return useContext(WishlistProvider);
+  return useContext(WishlistContext);
 }
