@@ -1,9 +1,8 @@
 import { useWishList } from "../../contexts/WishListContext";
-import { useState } from "react";
 import { AddWishlistItem } from "./AddWishlistItem";
-import styles from "./DestinationPage.module.css";
 import PlanetCard from "./PlanetCard";
 import { PlanetsWishlistItem } from "./PlanetsWishlistItem";
+import styles from "./DestinationPage.module.css";
 
 const planets = [
   {
@@ -61,12 +60,8 @@ export const Destinations = () => {
             <p>No planets in your wishlist :(</p>
           )}
 
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Use the AddWishlistItem component here. */}
           <AddWishlistItem onAddWishlistItem={addPlanetToWishlist} />
 
-          {/* 🧑🏽‍🚀 Task - Week 3*/}
-          {/* Use .map() to display the wishlist planets with the PlanetsWishlistItem component.  */}
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
             {planetsWishlist.map((planet) => (

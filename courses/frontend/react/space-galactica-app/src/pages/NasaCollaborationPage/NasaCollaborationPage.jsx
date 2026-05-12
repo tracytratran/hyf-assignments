@@ -19,8 +19,6 @@ export const NasaCollaboration = () => {
   const [dailyImg, setDailyImg] = useState({});
   const [roverPhoto, setRoverPhoto] = useState({});
 
-  // 🧑🏽‍🚀 Task - Week 3
-  // Fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable.
   useEffect(() => {
     const fetchAstronomyPicOfTheDay = async () => {
       const astronomyPicOfTheDayResponse = await fetch(
@@ -49,9 +47,6 @@ export const NasaCollaboration = () => {
         <h1>Collaboration with NASA</h1>
         <section className="card">
           <h2>Astronomy Picture of the day</h2>
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* After fetching data from the NASA_URLs.astronomyPicOfTheDay url, display the returned data here. */}
-          {/* You should display the title, explanation, and the image using the url from the response */}
           {dailyImg ? (
             <div className={styles.nasaPicOfTheDay}>
               <h3>{dailyImg.title}</h3>
@@ -64,8 +59,6 @@ export const NasaCollaboration = () => {
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Iterate over the roverPhoto?.photos array and display all the pictures. */}
           {roverPhoto?.photos?.length ? (
             <div className={styles.photosWrapper}>
               {roverPhoto.photos.map((photo) => (
