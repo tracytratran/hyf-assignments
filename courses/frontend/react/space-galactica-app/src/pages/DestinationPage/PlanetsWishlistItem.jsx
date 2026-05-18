@@ -1,4 +1,4 @@
-import styles from "./DestinationPage.module.css";
+import styles from "./PlanetsWishlistItem.module.css";
 
 export const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
   return (

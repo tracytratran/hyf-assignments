@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./DestinationPage.module.css";
+import styles from "./AddWishlistItem.module.css";
 
 export const AddWishlistItem = ({ onAddWishlistItem }) => {
   const [thumbnail, setThumbnail] = useState("/destination/image-europa.png");
