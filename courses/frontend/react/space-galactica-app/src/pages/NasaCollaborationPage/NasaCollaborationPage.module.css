@@ -4,9 +4,29 @@
   height: 100vh;
 }
 
+.nasaPicOfTheDay h3 {
+  font-style: italic;
+}
 
-.nasaPicOfTheDayImg {
+.nasaPicOfTheDay p {
+  text-align: justify;
+}
+
+.nasaPicOfTheDay img {
+  margin: 0.5rem auto;
   width: auto;
   height: 400px;
-
 }
+
+.photosWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 2rem;
+}
+
+/* .roverPhotos img {
+  width: 100%;
+  height: 300px;
+  border-radius: 1rem;
+  object-fit: cover;
+} */

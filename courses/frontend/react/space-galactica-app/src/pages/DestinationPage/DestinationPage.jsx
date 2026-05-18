@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 import PlanetCard from "./PlanetCard";
+import { AddWishlistItem } from "./AddWishlistItem";
+import { PlanetsWishlistItem } from "./PlanetsWishlistItem";
 
 const planets = [
   {
@@ -31,6 +33,10 @@ const planets = [
 
 export const Destinations = () => {
   const [planetsWishlist, setPlanetsWishlist] = useState([]);
+
+  const onAddWishlistItem = (name, thumbnail) => {
+    setPlanetsWishlist([...planetsWishlist, { name, thumbnail }]);
+  };
 
   const isPlanetInWishlist = (planetName) => {
     return planetsWishlist.some((planet) => planet.name === planetName);
@@ -67,16 +73,18 @@ export const Destinations = () => {
             <p>No planets in your wishlist :(</p>
           )}
 
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Use the AddWishlistItem component here. */}
+          <AddWishlistItem onAddWishlistItem={onAddWishlistItem} />
 
-          {/* 🧑🏽‍🚀 Task - Week 3
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
-            ...
-            Use .map() to display the wishlist planets with the PlanetsWishlistItem component. 
-          </div> 
-          */}
+            {planetsWishlist.map((planet) => (
+              <PlanetsWishlistItem
+                name={planet.name}
+                thumbnail={planet.thumbnail}
+                onRemove={() => removePlanetFromWishlist(planet.name)}
+              />
+            ))}
+          </div>
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
