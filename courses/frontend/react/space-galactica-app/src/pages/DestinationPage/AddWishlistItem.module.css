@@ -1,0 +1,25 @@
+.addWishlistItem {
+  border: 1px solid var(--border-color);
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  margin: var(--spacing-20);
+  padding: var(--spacing-20);
+}
+
+.addWishlistItem p {
+  margin-block-end: var(--spacing-20);
+}
+
+.addWishlistItem label {
+  margin: 0;
+  font-size: small;
+}
+
+.addWishlistItem input,
+.addWishlistItem select {
+  height: 30px;
+  margin-block-end: var(--spacing-20);
+}
