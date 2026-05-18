@@ -3,16 +3,9 @@ import styles from "./AddWishlistItem.module.css";
 
 export const AddWishlistItem = ({ onAddWishlistItem }) => {
   const [thumbnail, setThumbnail] = useState("/destination/image-europa.png");
-  // 🧑🏽‍🚀 Task - Week 3
-  // Add a useState for the handling of the <input id="customWishlist" type="text" />.
-  // Connect the setThumbnail to the <select>.
   const [customWishListItem, setCustomWishListItem] = useState("");
 
   const onAddItemPressed = () => {
-    // 🧑🏽‍🚀 Task - Week 3
-    // The required functionaity here:
-    // - call the onAddWishlistItem function;
-    // - clear the <input/> field .
     onAddWishlistItem(customWishListItem, thumbnail);
     setCustomWishListItem("");
   };
