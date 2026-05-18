@@ -37,9 +37,7 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Create a <NavItem> component, which accepts the following props: title, link, isActive.  */}
-          {/* <NavItem
+          <NavItem
             title={navbarItems[0].title}
             link={navbarItems[0].link}
             isActive={navbarItems[0].link === currentPath}
@@ -56,7 +54,8 @@ export const Navbar = () => {
             link={navbarItems[2].link}
             isActive={navbarItems[2].link === currentPath}
             order="03"
-          /> */}
+          />{" "}
+          */}
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Replace repeating content by using .map() and the previously created NavItem component. */}
           {navbarItems.map((navbarItem) => (
