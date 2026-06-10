@@ -49,8 +49,6 @@ export const Navbar = () => {
           ))}
           <li className={styles.wishlistBadge} aria-label="Wishlist"></li>
         </ul>
-        {/* 🧑🏽‍🚀 Task - Week 4 - part 3 */}
-        {/* Take the count of the planets wishlist from the context and display it in the Badge. */}
         <Badge count={wishlistCount()}>
           <Planet color="white" />
         </Badge>
