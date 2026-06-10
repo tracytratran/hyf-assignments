@@ -1,8 +1,8 @@
-import { useState } from "react";
-import styles from "./DestinationPage.module.css";
-import PlanetCard from "./PlanetCard";
+import { useWishList } from "../../contexts/WishListContext";
 import { AddWishlistItem } from "./AddWishlistItem";
+import PlanetCard from "./PlanetCard";
 import { PlanetsWishlistItem } from "./PlanetsWishlistItem";
+import styles from "./DestinationPage.module.css";
 
 const planets = [
   {
@@ -32,30 +32,17 @@ const planets = [
 ];
 
 export const Destinations = () => {
-  const [planetsWishlist, setPlanetsWishlist] = useState([]);
-
-  const onAddWishlistItem = (name, thumbnail) => {
-    setPlanetsWishlist([...planetsWishlist, { name, thumbnail }]);
-  };
-
-  const isPlanetInWishlist = (planetName) => {
-    return planetsWishlist.some((planet) => planet.name === planetName);
-  };
+  const {
+    planetsWishlist,
+    addPlanetToWishlist,
+    removePlanetFromWishlist,
+    isPlanetInWishlist,
+  } = useWishList();
 
   const togglePlanetSelection = (name, thumbnail) => {
     isPlanetInWishlist(name)
       ? removePlanetFromWishlist(name)
       : addPlanetToWishlist(name, thumbnail);
-  };
-
-  const addPlanetToWishlist = (name, thumbnail) => {
-    setPlanetsWishlist([...planetsWishlist, { name, thumbnail }]);
-  };
-
-  const removePlanetFromWishlist = (name) => {
-    setPlanetsWishlist(
-      planetsWishlist.filter((planet) => planet.name !== name),
-    );
   };
 
   return (
@@ -73,7 +60,7 @@ export const Destinations = () => {
             <p>No planets in your wishlist :(</p>
           )}
 
-          <AddWishlistItem onAddWishlistItem={onAddWishlistItem} />
+          <AddWishlistItem onAddWishlistItem={addPlanetToWishlist} />
 
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
